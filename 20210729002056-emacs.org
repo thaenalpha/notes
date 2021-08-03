@@ -1,0 +1,9 @@
+#+title: Emacs
+
+* [2021-07-19 Mon] These resources will help you as you continue on your Emacs journey:
+
+ * The Emacs Manual provides excellent, comprehensive instructions. Spend some time with it every morning! Download the PDF and read it on the go: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html#Top.
+ * The Emacs Reference Card is a handy cheat sheet: http://www.ic.unicamp.br/~helio/disciplinas/MC102/Emacs_Reference_Card.pdf.
+ * Mastering Emacs by Mickey Petersen is one of the best Emacs resources available. Start with the reading guide: http://www.masteringemacs.org/reading-guide/.
+ * For the more visually minded folks, I recommend the hand-drawn “How to Learn Emacs: A Beginner’s Guide to Emacs 24 or Later” by Sacha Chua: http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png.
+ * Just press C-h t for the built-in tutorial.

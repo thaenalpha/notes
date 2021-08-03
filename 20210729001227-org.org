@@ -1,0 +1,5 @@
+#+title: Org
+* Org capture: closings the frame after a capture
+Source: [2021-07-26 Mon],
+**  [[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
+Captured On: [2021-07-26 Mon 17:05]

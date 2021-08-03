@@ -1,0 +1,10 @@
+#+title: clj-kondo
+* Project setup
+Captured on: [2021-07-19 Mon]
+
+#+begin_src sh
+clj-kondo --lint "$(clojure -Spath)" --dependencies --parallel --copy-configs
+clj-kondo --lint "$(lein classpath)" --dependencies --parallel --copy-configs
+#+end_src
+
+to lint the entire classpath to teach clj-kondo about all the libraries you are using, including [[file:20210728234216-clojure.org][Clojure]] and/or ClojureScript itself

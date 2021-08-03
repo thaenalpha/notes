@@ -1,0 +1,24 @@
+#+title: Powershell
+* How Powershell read input
+Captured On: [2021-07-21 Wed]
+
+#+begin_example sh
+ﲵ  echo $themesPath/hello
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules /hello
+ﲵ  echo $themesPath.TrimEnd(' ')/hello
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules
+/hello
+ﲵ  echo $themesPath.TrimEnd(' ') /hello
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules
+/hello
+ﲵ  echo "$themesPath.TrimEnd(' ')/hello"
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules .TrimEnd(' ')/hello
+ﲵ  echo "$($themesPath.TrimEnd(' '))/hello"
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules/hello
+ﲵ  echo $($themesPath.TrimEnd(' '))/hello
+/mnt/c/Users/nopan/OneDrive/Documents/WindowsPowerShell/Modules
+/hello
+#+end_example
+
+- $(x.func()) still evaluate as function variable. If it returns string and you want to combine other string altogether, without "" delimiter it will interprets as 2 arguments. This excepts for string variable which can combine remaining strings without "". So in this case we need to use "" to instruct that's we echo with 1 argument not two!!
+- "" will eval $ but won't eval .method()(treated as a string).

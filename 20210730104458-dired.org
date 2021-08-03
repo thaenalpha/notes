@@ -1,0 +1,29 @@
+#+title: Dired
+#+roam_tags: emacs emacs-packages
+Source: [2021-07-03 Sat 18:00], [[https://www.youtube.com/watch?v=oZSmlAAbmYs&t=131s][Emacs Doom E03 - A short intro to Dired - YouTube]]
+* Navigation
+ - (h j k l)
+ - ret: go to a subdirectory
+ - -/^: go to up folder
+ - Spc .: find file in current dir
+ - ( (S-9): switch between simple/details view
+ - o : order by date/name
+ - C-w w or Spc w w: switch between window
+* Selection
+- Asterisk (*): select all (prefix)
+  - / : folders
+  - t: toggle marks
+  - delete : unmark backward
+- m : set a mark on file/folder
+- u : unset a mark on file/folder
+- U : unset marks on files/folders
+* Manipulation
+- d..x : set a mark to delete n files/folders
+- D: same as d..x but ask for delete that one file/folder immediately
+- c: compress defined by rule
+- C: copy file/folder to directory in right window (destination)
+- R: rename file/folder to directory in right window (destination)
+- i: edit file/folder name (:w to save change)
+- M: change mode of file/folder
+- O: change owner of file/folder
+- + : new folder
