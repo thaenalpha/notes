@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       5e75205c-4779-4151-a4b0-b161c8539c5d
+:END:
+#+title: OpenSSH
+* ssh-keygen command
+Source: [2021-08-26 Thu], wslg as a default application
+ #+BEGIN_QUOTE
+ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+#+END_QUOTE

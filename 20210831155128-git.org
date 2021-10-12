@@ -1,0 +1,12 @@
+:PROPERTIES:
+:ID:       5359a07c-be6d-4047-991d-7cfecbcbf9fb
+:END:
+#+title: Git
+* Edit commit: commit --amend; push --force
+* Rollback
+** Reset - Committed but not pushed
+- Hard: Head, index & Discard changes
+- Soft: keep changes
+- Mix
+- Keep: Keep uncommitted
+** Revert - Committed & pushed

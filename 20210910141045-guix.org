@@ -1,0 +1,13 @@
+:PROPERTIES:
+:ID:       679965dd-9528-403c-ae08-a46676164691
+:END:
+#+title: Guix
+* History
+** Making the guix-daemon service refer to our local user nopan instead
+Source: [2021-09-10 Fri],
+[[https://guix.gnu.org/en/blog/2019/running-a-guix-xfce-desktop-on-centos-7/][Running a Guix Xfce Desktop on CentOS 7 — 2019 — Blog — GNU Guix]]
+#+begin_src sh
+sudo sed -i 's/root/nopan/' /etc/systemd/system/guix-daemon.service
+#+end_src
+
+#+RESULTS:

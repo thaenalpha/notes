@@ -1,9 +1,34 @@
+:PROPERTIES:
+:ID:       71cb71ed-b61f-49e7-b111-dea822c7d3e3
+:END:
 #+title: Emacs
+* :tools
+[[id:440b0036-e02a-4e45-a7ce-9ed5b0b25bb6][Magit]]           ; a git porcelain for Emacs
 
-* [2021-07-19 Mon] These resources will help you as you continue on your Emacs journey:
-
- * The Emacs Manual provides excellent, comprehensive instructions. Spend some time with it every morning! Download the PDF and read it on the go: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html#Top.
+* :resources
+** [2021-07-19 Mon] These resources will help you continue on your Emacs journey
+ * The Emacs Manual provides excellent, comprehensive instructions.
+Spend some time with it every morning! Download the PDF and read it on the go: http://www.gnu.org/software/emacs/manual/html_node/emacs/index.html#Top.
  * The Emacs Reference Card is a handy cheat sheet: http://www.ic.unicamp.br/~helio/disciplinas/MC102/Emacs_Reference_Card.pdf.
- * Mastering Emacs by Mickey Petersen is one of the best Emacs resources available. Start with the reading guide: http://www.masteringemacs.org/reading-guide/.
- * For the more visually minded folks, I recommend the hand-drawn “How to Learn Emacs: A Beginner’s Guide to Emacs 24 or Later” by Sacha Chua: http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png.
+ * Mastering Emacs by Mickey Petersen is one of the best Emacs resources available.
+Start with the reading guide: http://www.masteringemacs.org/reading-guide/.
+ * For the more visually minded folks, I recommend the hand-drawn
+“How to Learn Emacs: A Beginner’s Guide to Emacs 24 or Later” by Sacha Chua: http://sachachua.com/blog/wp-content/uploads/2013/05/How-to-Learn-Emacs8.png.
  * Just press C-h t for the built-in tutorial.
+* :Optimize suggestions
+Source: [2021-09-03 Fri], [[https://www.reddit.com/r/emacs/comments/pg69k8/my_setupalmost_the_powerful_c_ide_and_consume_so/hbc84y3?utm_source=share&utm_medium=web2x&context=3][My setup(Almost the powerful C++ IDE) and Consume so many resources in GUI. :...]]
+ #+BEGIN_QUOTE
+- Why are you providing a package and using load instead of require?
+- Your config is really bloated with things that slow down a lot (Ivy, Powerline, Lsp-UI, Helm, Counsel, Tabs, All-The-Icons... and so on), try to use lighter alternatives like vertico, eglot and more built-in packages.
+- I don't know why but there are a lot a things that doesn't need to be there, like packages that do the same thing: Ivy, Helm and Selectrum; Neotree and Treeemacs. Weird hooks, functions and lot of mistakes with use-package like deferring for 4s instead of using command or another better hook.
+#+END_QUOTE
+*  [[https://www.reddit.com/r/emacs/comments/cr91vw/tip_use_dirlocalsel_to_make_entire_projects_on/][(Tip) Use .dir-locals.el to make entire projects on save. : emacs]]
+Captured On: [2021-08-01 Sun 23:05]
+
+* [2021-07-17 Sat] Other Useful Editing Key Bindings
+| Keys | Description                                                                 |
+|------+-----------------------------------------------------------------------------|
+| Tab  | Indent line.                                                                |
+| C-j  | New line and indent, equivalent to enter followed by tab.                   |
+| M-/  | Hippie expand; cycles through possible expansions of the text before point. |
+| M-\  | Delete all spaces and tabs around point. (I use this one a lot.)            |

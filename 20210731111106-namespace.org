@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       62789ae7-5b4b-4058-9e92-3953e04af6af
+:END:
 #+title: namespace
-#+roam_tags: clojure
-* [[file:20210728234216-clojure.org][Clojure]]
+#+filetags: :clojure:
+* [[id:d3065285-875a-43f6-9965-12697aadba2b][Clojure]]

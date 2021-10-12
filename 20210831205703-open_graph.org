@@ -1,0 +1,16 @@
+:PROPERTIES:
+:ID:       3ab55cff-6bbe-45b4-b58c-354c5ab33c98
+:END:
+#+title: Open Graph
+* og attributes in <meta Tag>
+:PROPERTIES:
+:ID:       9564248f-ae52-457e-84ae-4debeb082e83
+:END:
+Source: [2021-08-31 Tue],
+[[https://stackoverflow.com/questions/8855361/fb-opengraph-ogimage-not-pulling-images-possibly-https?answertab=active#tab-top][facebook - FB OpenGraph og:image not pulling images (possibly https?) - Stack...]]
+ #+BEGIN_QUOTE
+og:image:secure
+#+END_QUOTE
+
+This meta tag is used to locate the image that'll use for sharing through
+secure connection (HTTPS)

@@ -1,3 +1,82 @@
+:PROPERTIES:
+:ID:       f02ad605-0ff9-4546-9500-135327f2f104
+:END:
 #+title: Doom Emacs
-#+roam_tags: vim emacs evil emacs-lisp emacs-configuration doom-emacs
+#+filetags: :vim:emacs:evil:emacs_lisp:emacs_configuration:doom_emacs:
 * [[file:../../../../../../../home/nopan/org/roam/20210730104458-dired.org][Dired]]
+* fill-column-indicator
+Source: [2021-08-28 Sat], [[https://github.com/hlissner/doom-emacs/issues/5243#issuecomment-875709373][hlissner/doom-emacs#5243 fill-column indicator module is no longer working af...]]
+ #+BEGIN_QUOTE
+display-fill-column-indicator is built into Emacs 27.1+. To activate it add (add-hook 'doom-first-buffer-hook #'global-display-fill-column-indicator-mode) to your config, or (add-hook! (prog-mode conf-mode text-mode) #'display-fill-column-indicator-mode) -- whichever you prefer.
+#+END_QUOTE
+#+begin_src clojure
+(if (< (rand) 0.5) '(add-hook 'doom-first-buffer-hook #'global-display-fill-column-indicator-mode) '(add-hook! (prog-mode conf-mode text-mode) #'display-fill-column-indicator-mode))
+#+end_src
+
+#+RESULTS:
+| add-hook | 'doom-first-buffer-hook | (var global-display-fill-column-indicator-mode) |
+* [2021-07-11 Sun 23:01] Key Bindings for Killing and Yanking Text
+** [[id:71cb71ed-b61f-49e7-b111-dea822c7d3e3][Emacs]]
+   Keys   Description
+   C-w   Kill region.
+   M-w   Copy region to kill ring.
+   C-y   Yank.
+   M-y   Cycle through kill ring after yanking.
+   M-d   Kill word.
+   C-k   Kill line.
+** [[id:f02ad605-0ff9-4546-9500-135327f2f104][Doom Emacs]]
+   Keys   Description
+   C-w   Evil window map
+   M-w   Copy region to kill ring or the rest of buffer to the point.
+   C-y   Scroll page up without moving cursor until cursor is at the bottom then it move but still in bottom end.
+   C-e   opposite of C-y
+   M-y   Cycle through kill ring after evil-pasting.
+   M-d   highlight the next occurrence of current word/highlight(v) with new cursor (evil-multiedit)
+   C-k   Kill line.
+** Insert State
+ | key   | command                     | previous |
+ |-------+-----------------------------+----------|
+ | =C-j= | ~next-line~                 | ~nil~    |
+ | =C-k= | ~previous-line~             | ~nil~    |
+ | =C-w= | ~doom/delete-backward-word~ |          |
+ | =C-y= | ~repeats-char-on-last-line~ |          |
+ | =M-y= | ~popup-kill-ring-window~    |          |
+ | =M-d= | ~Kill word~                 |          |
+
+* 2021-07-10 Sat
+** enclosing-in-parentheses-with-vim
+ Smartparens - v highlight text then M-( also applied to '' "" [] {}
+** How to select between-brackets-or-quotes-or-in-vim
+ Navigate to get inside the parentheses, then y/v/c/d i ([{'" or }])
+** indent-rigidly
+(C-x TAB) control indent with h l H L
+
+** indent-rigidly
+(C-x TAB) control indent with h l H L
+
+* [2021-07-06 Tue 10:51] Emacs Doom 06-07 - Evil snipe - Avy
+** Evil snipe - f/t/s char, ;/, for next/previous navigation
+ - f: find char in the row
+ - F: backward find
+ - t: place cursor before target char in the row
+ - T: t backward
+ - s: find 2char in the row
+ - S: s backward
+** Avy - g s SPC char [option] asdf(#shortcut)
+ - Avy can navigate to word on another line, paragraph or window(have to enable avy-all-window var)
+ - Avy can process any command on the target word (just navigate if no command given)
+ - x: delete and move cursor command
+ - X: delete but stay in place command
+ - y: yank(copy) and paste word to the current position
+ - Y: yank(copy) and paste string from word to the EOL to the current position
+ - t: teleport(move) word to the current position
+ - T: teleport(move) string from word to the EOL to the current position
+
+* [2021-07-06 Tue 12:58] Emacs Doom 08 - Multiple cursor in Emacs with evil-multiedit
+ - M-d: highlight the next occurrence of current word/highlight(v) with new cursor
+ - M-D: highlight the previous occurrence of current word/highlight(v) with new cursor
+ - R: highlight all occurrences of the highlight(v) string with new cursors.
+ - C-n: navigate to the next occurrence
+ - C-p: navigate to the previous..
+ - Enter: include/exclude the occurrence
+ - beware of editing out of the boundaries, for example by delete the last word with 'd w' but all the cursors doesn't cover highlights with spaces at the end of the last word which will not have the same result as the editing one.

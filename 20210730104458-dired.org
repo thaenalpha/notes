@@ -1,5 +1,8 @@
+:PROPERTIES:
+:ID:       8ff54d29-e418-4e27-b3dc-c48b3f435f63
+:END:
 #+title: Dired
-#+roam_tags: emacs emacs-packages
+#+filetags: :emacs:emacs_packages:
 Source: [2021-07-03 Sat 18:00], [[https://www.youtube.com/watch?v=oZSmlAAbmYs&t=131s][Emacs Doom E03 - A short intro to Dired - YouTube]]
 * Navigation
  - (h j k l)

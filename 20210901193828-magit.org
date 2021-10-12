@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       440b0036-e02a-4e45-a7ce-9ed5b0b25bb6
+:END:
+#+title: tools/magit
+* Description
+A git porcelain for Emacs.
+* Plugins
++ =forge= [[http://endlessparentheses.com/easily-create-github-prs-from-magit.html][Easily Create Github PRs from Magit in Emacs · Endless Parentheses]]

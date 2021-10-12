@@ -1,1 +1,47 @@
+:PROPERTIES:
+:ID:       d3065285-875a-43f6-9965-12697aadba2b
+:END:
 #+title: Clojure
+* [[id:35a48616-c817-49bd-b47a-b3f72f190576][Using Emacs with Clojure]]
+*  [[https://twitter.com/practical_li/status/1430688837928431622][Practical_li บนทวิตเตอร์: "A new Clojure Data Science community landing page https://t.co/Is5ulWEpDt With a new blog site https://t.co/6wKIvB5QqV And the start of a site for practical guides using Clojure for Data Science https://t.co/TRSYlfBbfq Contributions most welcome to these new projects https://t.co/FjRxClTy4r" / ทวิตเตอร์]]
+Captured On: [2021-08-26 Thu 09:02]
+* [2021-07-21 Wed] Examples of Clojure arrow macro
+#+begin_example sh
+bb '(-> 3 (+ 2))'
+#+end_example
+5
+
+ ~  bb '(-> 3 (- 2))'
+1
+
+ ~  bb '(->> 3 (- 2))'
+-1
+
+ ~  bb '(- 2 3)'
+-1
+
+ ~  bb '(-> 2 (- 3))'
+-1
+#+begin_example sh
+bb '(-> "world" (print "hello"))'
+#+end_example
+world hello%
+
+ ~  bb '(-> "world" (println "hello"))'
+world hello
+
+ ~  bb '(->> "world" (println "hello"))'
+hello world
+
+ ~  bb '(-> "Thean" (println "hello" "world"))'
+Thean hello world
+
+ ~  bb '(->> "Thean" (println "hello" "world"))'
+hello world Thean
+
+ ~  bb '(-> 3 - 2)'
+----- Error --------------------------------------------------------------------
+Type:     java.lang.Exception
+Message:  Cannot call 2 as a function.
+Location: <expr>:1:1
+

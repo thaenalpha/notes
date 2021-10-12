@@ -1,5 +1,22 @@
+:PROPERTIES:
+:ID:       3158add7-e18e-4165-8012-9cabe1f132d1
+:END:
 #+title: Org
-* Org capture: closings the frame after a capture
+* Org capture
 Source: [2021-07-26 Mon],
-**  [[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
+[[https://github.com/sprig/org-capture-extension][sprig/org-capture-extension: A Chrome and firefox extension facilitating org-capture in emacs]]
 Captured On: [2021-07-26 Mon 17:05]
+https://github.com/sprig/org-capture-extension
+* Setup handlers in emacs
+Source: [2021-08-28 Sat], https://github.com/sprig/org-capture-extension
+ #+BEGIN_QUOTE
+If some text is selected before the button is clicked, then the following is sent to emacs:
+
+org-protocol://capture:/p/<url>/<title>/selection>
+
+If nothing is selected, then instead the following is sent:
+
+org-protocol://capture:/L/<url>/<title>
+
+This means that you need to have appropriate capture templates for "L" and for "p".
+#+END_QUOTE

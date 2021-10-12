@@ -1,0 +1,58 @@
+:PROPERTIES:
+:ID:       ce1028b9-620b-4c32-96e9-f2c0ad693c5a
+:END:
+#+title: Linux
+* Configure your mail software - the "MTA" aka /usr/sbin/sendmail - to forward the messages to your personal mail address.
+Source: [2021-07-29 Thu], [[https://superuser.com/questions/306163/what-is-the-you-have-new-mail-message-in-linux-unix/306180#306180][What is the "You have new mail" message in Linux/UNIX? - Super User]]
+ #+BEGIN_QUOTE
+Note that /usr/sbin/sendmail nowadays is a shared API and doesn't necessarily mean the original Sendmail MTA. In fact, you shouldn't use Sendmail, but something more modern like OpenSMTPD, Postfix, or Exim4. All of them provide the same /usr/sbin/sendmail tool, but they're easier to configure, more secure, and just as powerful.
+
+#+END_QUOTE
+
+* You have a new mail [[https://qastack.in.th/superuser/306163/what-is-the-you-have-new-mail-message-in-linuxunix][ข้อความ“ คุณมีจดหมายใหม่” ใน Linux / UNIX คืออะไร]]
+Captured On: [2021-07-30 Fri 10:21]
+* The Missing Semester 2020 Lecture1: The Shell
+ - WSL has sysfs! in the name of Microsoft Hyper-V Virtual HW
+ - pwd: print working directory
+ - file inside subdir will unable to execute if any dir in between not has r permission
+ - cd - : toggle cd between a recent folder and working one.
+ - \ : use to escape space character
+ - input-output: < file - > file
+   + echo hello > hello.txt
+     cat hello.txt = cat < hello.txt
+     cat < hello.txt > hello2.txt; cat hello2.txt
+     >> (append)
+     cat < hello.txt >> hello2.txt
+     ls -l / | tail -n1 # tail: get last lines
+     ls -l / | tail -n1 > ls.txt
+     curl --head --silent google.com | grep -i content-length
+     curl --head --silent google.com | grep -i content-length | cut --delimiter=' ' -f2
+     root: userid 0
+     sudo : do as superuser
+     ls /sys: variously kernel parameter (core of pc) present through file system.
+     cd class/
+     cd backlight/
+     cd intel_backlight/
+     cat brightness
+     cat max_brightness
+     sudo echo 500 > brightness : Permission denied. Because brightness is still accessed from normal user Shell
+     sudo su
+     echo 500 > brightness
+     exit
+     echo 1060 | sudo tee brightness # tee: take an input & writes it to file.
+     1060
+     sys/class/backlight$ sudo find -iname '*brightness'
+     sys/class/leds$ cd input4\:\:scrollock/
+     cat brightness => 0
+     echo 1 | sudo tee brightness => 1 # (ex. display scrollock-LED when receives email)
+     xdg-open lectures.html # open file in appropriate program.
+** Exercise:
+ - touch filename - change file timestamps: update the access and modification times of each FILE to the current time. A File arg that does not exist is created empty (new empty file)
+ - sh know this can be run even though the file not given execute permission.
+ - l | grep -i semester | cut -d ' ' -f9-11 > ~/last-modified.txt
+
+* WSL vs Linux with a desktop environment
+Source: [2021-08-27 Fri],
+ #+BEGIN_QUOTE
+Overall, I'd lean in favor of Linux over Windows (Linux Mint or LMDE are what I would personally recommend for people new to Linux, they're just as user friendly as Ubuntu but don't have as many of the same stupid limitations that Ubuntu imposes). Personally, I actually use both, dual-booting Windows 10 and Gentoo Linux, using Gentoo for work and when I need to do actual Linux things like cloning hard drives or recovering data and Windows otherwise (largely because I'm a very active gamer), but I have WSL2 set up on Windows with Debian for when I just need to do something quick in a Linux environment.
+#+END_QUOTE

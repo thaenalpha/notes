@@ -1,0 +1,7 @@
+:PROPERTIES:
+:ID:       4289eecb-cf05-465c-ab16-635ba4fba4e4
+:END:
+#+title: Firefox
+* Hacks
+** Profiles
++ =Dell= C:\Users\nopan\AppData\Roaming\Mozilla\Firefox\Profiles\sd5dxbuz.default-nightly

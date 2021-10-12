@@ -1,3 +1,6 @@
+:PROPERTIES:
+:ID:       5a79d2fc-d003-460b-9a2c-83ecec922318
+:END:
 #+title: Powershell
 * How Powershell read input
 Captured On: [2021-07-21 Wed]
