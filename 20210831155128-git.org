@@ -2,6 +2,24 @@
 :ID:       5359a07c-be6d-4047-991d-7cfecbcbf9fb
 :END:
 #+title: Git
+* Re base
+** How do I git push rebase?  ──(Fri,Oct15)─┘
+
+★  Answer from https://stackoverflow.com/questions/8939977/git-push-rejected-after-feature-branch-rebase ★
+The problem is that git push assumes that remote branch can be fast-forwarded to your local branch, that is that all the difference between local and remote branches is in local having some new commits at the end like that:
+Z--X--R         <- origin/some-branch (can be fast-forwarded to Y commit)
+       \
+        T--Y    <- some-branch
+
+When you perform git rebase commits D and E are applied to new base and new commits are created. That means after rebase you have something like that:
+A--B--C------F--G--D'--E'   <- feature-branch
+       \
+        D--E                <- origin/feature-branch
+
+In that situation remote branch can't be fast-forwarded to local. Though, theoretically local branch can be merged into remote (obviously you don't need it in that case), but as git push performs only fast-forward merges it throws and error.
+And what --force option does is just ignoring state of remote branch and setting it to the commit you're pushing into it. So git push --force origin feature-branch simply overrides origin/feature-branch with local feature-branch.
+In my opinion, rebasing feature branches on master and force-pushing them back to remote repository is OK as long as you're the only one who works on that branch.
+
 * Edit commit: commit --amend; push --force
 * Rollback
 ** Reset - Committed but not pushed
