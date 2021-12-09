@@ -4,4 +4,11 @@
 #+title: Firefox
 * Hacks
 ** Profiles
-+ =Dell= C:\Users\nopan\AppData\Roaming\Mozilla\Firefox\Profiles\sd5dxbuz.default-nightly
+* Firefox Relay
+Source: [2021-11-20 Sat], https://www.youtube.com/watch?v=tp95rnotz7A
+#+BEGIN_QUOTE
+Meet Firefox Relay, a privacy-first and free product that hides your real email address.
+#+END_QUOTE
+
+** เพิ่มเลเยอร์ให้กล่องจดหมายของเราอีกชั้นด้วย Firefox Relay, a privacy-first and free product that hides your real email address. - สามารถสุ่ม email alias ได้ 5 อัน เอาไว้กรอกอีเมลแลกของฟรี 😁 https://youtu.be/tp95rnotz7A
+Captured On: [2021-11-20 Sat 17:08]
