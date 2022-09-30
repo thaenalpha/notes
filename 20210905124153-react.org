@@ -2,6 +2,12 @@
 :ID:       8b81de25-b0b5-435c-99a2-cbebf03937fc
 :END:
 #+title: React
+#+filetags: :video:
+- Was first released in 2013
+- Was original created by Jordan Walke
+- Has well over 100k starts on GitHub
+- Is maintained by Facebook
+
 * tutorial
 ** [[https://www.youtube.com/watch?v=m_u6P5k0vP0][Full Stack React & Firebase Tutorial - Build a social media app - YouTube]]
 Source: [2021-09-05 Sun],
