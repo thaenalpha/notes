@@ -1,3 +1,7 @@
+import { enableMapSet } from "immer"
+import React from 'react';
+
+enableMapSet()
 import Head from 'next/head'
 
 export default function Home() {
