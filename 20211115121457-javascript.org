@@ -1,5 +1,148 @@
 :PROPERTIES:
 :ID:       54f36b4e-3a28-4280-b0ae-558cb1e1a898
+:ROAM_REFS: "[[https://www.30secondsofcode.org/js/s/get-scrollbar-width][Scrollbar width - 30 seconds of code]]"
 :END:
 #+title: JavaScript
+#+filetags: :website:
+* Table of content :TOC_3:
+- [[#react][React]]
+  - [[#packages][Packages]]
+- [[#community-resources][Community Resources]]
+  - [[#asking-for-help][Asking for help]]
+  - [[#project-roadmap][Project roadmap]]
+  - [[#tutorials--guides][Tutorials & guides]]
+    - [[#2022-05-05-thu-i-would-like-to-learn-more-js---dev-community][<2022-05-05 Thu> I would like to learn more JS - DEV Community]]
+    - [[#2022-07-26-tue-the-best-way-to-use-javascript-in-the-frontend][<2022-07-26 Tue> The best way to use JavaScript in the frontend]]
+    - [[#the-modern-javascript-tutorial][The Modern JavaScript Tutorial]]
+- [[#browser][Browser]]
+  - [[#scrollbar-width][Scrollbar width]]
+    - [[#recommended-snippets][Recommended snippets]]
+
 * [[id:8b81de25-b0b5-435c-99a2-cbebf03937fc][React]]
+
+** Packages
+- [[elisp:(evil-collection-xwidget-webkit-new-tab "//avvvatars.com/")][Avvvatars - Open Source React UI Avatar Library]]
+
+* Community Resources
+** Asking for help
+-
+
+** Project roadmap
+
+- Development roadmap - A timeline outlining what's being worked on and
+  when it is expected to be done.
+
+- Upstream bugs - Tracks issues
+
+** Tutorials & guides
+
+*** <2022-05-05 Thu> [[elisp:(evil-collection-xwidget-webkit-new-tab "//dev.to/vulcanwm/comment/1o0n2")][I would like to learn more JS - DEV Community]]
+
+#+begin_quote
+
+Hey, maybe I can help you there.
+
+I've been working with Software Development and Javascript / Typescript
+for some time now, and last year my manager introduced me to Functional
+Programming (FP). I liked it very much, and it completely changed the
+way I wrote code.
+
+Maybe it can be interesting to you too.
+
+These are some resources I found:
+
+- [[elisp:(evil-collection-xwidget-webkit-new-tab "//medium.com/javascript-scene/composing-software-the-book-f31c77fc3ddc")][Composing Software: The Book. Note: This is part of the “Composing… | by Eric...]]
+
+- [[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/MostlyAdequate/mostly-adequate-guide")][GitHub - MostlyAdequate/mostly-adequate-guide: Mostly adequate guide to FP (i...]]
+
+#+end_quote
+
+*** <2022-07-26 Tue> The best way to use JavaScript in the frontend
+
+[[elisp:(evil-collection-xwidget-webkit-new-tab "//nitter.catalyst.sx/oliverjumpertz")][@oliverjumpertz]] <2022-07-26 Tue>
+
+#+begin_quote
+
+: Use as little as possible.
+
+Optimize like this:
+
+- Tree-shake unused code
+
+- Minify your code
+
+- Generate static pages where possible
+
+- Stay away from libraries too large
+
+- Always concentrate on user experience (page load speed)
+
+#+end_quote
+
+*** [[elisp:(evil-collection-xwidget-webkit-new-tab "//javascript.info/")][The Modern JavaScript Tutorial]] :website:
+
+* Browser
+
+** Scrollbar width :website:
+
+[2022-07-25 Mon 18:01]
+
+[[elisp:(evil-collection-xwidget-webkit-new-tab "//nitter.mint.lgbt/chalarangelo")][Angelos Chalaris]] · <2022-07-16 Sat>
+
+Calculates the width of the window's vertical scrollbar.
+
+- Use =Window.innerWidth= to get the interior width of the window.
+- Use =Element.clientWidth= to get the inner width of the =Document= element.
+- Subtract the two values to get the width of the vertical scrollbar.
+
+#+begin_src js
+const getScrollbarWidth = () =>
+      window.innerWidth - document.documentElement.clientWidth;
+#+end_src
+
+#+begin_src js
+getScrollbarWidth();  // 15
+#+end_src
+
+[[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/30-seconds/30-seconds-of-code/blob/master/snippets/getScrollbarWidth.md")][30-seconds-of-code/getScrollbarWidth.md at master · GitHub]]
+
+*** Recommended snippets
+
+-
+
+  *** [[elisp:(org-web-tools-read-url-as-org "https://www.30secondsofcode.org/js/s/get-elements-bigger-than-viewport")][Get elements bigger than viewport]]
+  :PROPERTIES:
+  :CUSTOM_ID: get-elements-bigger-than-viewport
+  :CLASS: card-title m-0 txt-200 fs-lg md:fs-xl f-alt f-ellipsis
+  :END:
+  JavaScript, Browser
+
+  Returns an array of HTML elements whose width is larger than that of the viewport's.
+
+-
+
+  *** [[elisp:(org-web-tools-read-url-as-org "https://www.30secondsofcode.org/js/s/smooth-scroll")][Smooth scroll element into view]]
+  :PROPERTIES:
+  :CUSTOM_ID: smooth-scroll-element-into-view
+  :CLASS: card-title m-0 txt-200 fs-lg md:fs-xl f-alt f-ellipsis
+  :END:
+  JavaScript, Browser
+
+  Smoothly scrolls the element on which it's called into the visible area of the browser window.
+
+-
+
+  *** [[elisp:(org-web-tools-read-url-as-org "https://www.30secondsofcode.org/js/s/get-vertical-offset")][Vertical offset of element]]
+  :PROPERTIES:
+  :CUSTOM_ID: vertical-offset-of-element
+  :CLASS: card-title m-0 txt-200 fs-lg md:fs-xl f-alt f-ellipsis
+  :END:
+  JavaScript, Browser
+
+  Finds the distance from a given element to the top of the document.
+
+[[elisp:(org-web-tools-read-url-as-org "//www.30secondsofcode.org/about")][About]] [[elisp:(evil-collection-xwidget-webkit-new-tab "//www.30secondsofcode.org/cookies")][Cookies]] [[elisp:(evil-collection-xwidget-webkit-new-tab "//www.30secondsofcode.org/faq")][FAQ]] [[elisp:(evil-collection-xwidget-webkit-new-tab "//www.30secondsofcode.org/feed")][RSS]] [[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/30-seconds")][GitHub]] [[elisp:(evil-collection-xwidget-webkit-new-tab "//nitter.it/30secondsofcode")][Twitter]]
+
+Website, name & logo © 2017-2022 [[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/30-seconds")][30 seconds of code]]\\
+Individual snippets licensed under [[elisp:(evil-collection-xwidget-webkit-new-tab "//creativecommons.org/licenses/by/4.0/")][CC-BY-4.0]]\\
+Powered by [[elisp:(evil-collection-xwidget-webkit-new-tab "//www.netlify.com/")][Netlify]], [[elisp:(evil-collection-xwidget-webkit-new-tab "//nextjs.org/")][Next.js]] & [[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/")][GitHub]]
