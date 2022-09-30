@@ -25,7 +25,7 @@ Use function based components for Redux.
 
 #+begin_quote
 
-[[elisp:(evil-collection-xwidget-webkit-new-tab "//medium.com/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3")][Immer: Immutability the easy way]]
+[[elisp:(evil-collection-xwidget-webkit-new-tab "//sc.vern.cc/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3")][Immer: Immutability the easy way]]
 
 #+end_quote
 
