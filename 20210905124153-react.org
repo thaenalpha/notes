@@ -9,15 +9,16 @@ Source: [2021-09-05 Sun],
 Amazing. I've been learning MERN development for the last year but this was the first app I've built both front and backend together all thanks to you. I learned some very important lessons, one being that Redux is outdated thanks for function based components. Secondly this project gave me a lot of motivation and confidence. I feel so much more prepared now. Thank you
 #+END_QUOTE
 * Useful information
-Redux is outdated thanks for function based components.
+Use function based components for Redux.
 * Immer
 Source: [2021-11-15 Mon], https://immerjs.github.io/immer/
  #+BEGIN_QUOTE
 Immer: Immutability the easy way
 #+END_QUOTE
 ** Introduction
+
 *** A quick example for comparison
-**** With Immer
+**** Without Immer
 #+begin_src js
 const baseState = [
     {
@@ -43,13 +44,126 @@ console.log(nextState)
 #+RESULTS:
 : [{ title: 'Learn TypeScript '(\, done:) true } (\, {) title: 'Try Immer '(\, done:) true } (\, {) title: 'Tweet about it '}]
 
-**** Without Immer
-#+begin_src js :tangle try-next/pages/immer.js
+**** With Immer
+#+begin_src js :tangle try-next/pages/immer/index.js
 import produce from "immer"
+
+const baseState = [
+    {
+        title: "Learn TypeScript",
+        done: true
+    },
+    {
+        title: "Try Immer",
+        done: false
+    }
+]
 
 const nextState = produce(baseState, draft => {
     draft[1].done = true
-    draft.push({title: "Tweet about it"})
+    draft.push({ title: "Tweet about it" })
 })
 console.log(nextState)
+
+export default function ImmerPage() {
+    return (
+        <div className="container">
+            <main>
+                {nextState.map((todo, i) => {
+                    return <pre key={i}>{todo.title}</pre>
+                })}
+            </main>
+        </div>
+    )
+};
+#+end_src
+
+#+RESULTS:
+
+*** How Immer works
+#+BEGIN_QUOTE
+Using Immer is like having a personal assistant. The assistant takes a letter (the current state) and gives you a copy (draft) to jot changes onto. Once you are done, the assistant will take your draft and produce the real immutable, final letter for you (the next state).
+#+END_QUOTE
+Source: [2021-11-16 Tue],
+
+** Installation
+:PROPERTIES:
+:ID:       fb2f5e23-99fc-4d67-9371-906d72ccc335
+:END:
+Immer can be installed as a direct dependency, and will work in any ES5 environment:
+
+ #+BEGIN_QUOTE
+Yarn: ~yarn add immer~
+NPM: ~npm install immer~
+CDN: Exposed global is immer
+    Unpkg: <script src="https://unpkg.com/immer"></script>
+    JSDelivr: <script src="https://cdn.jsdelivr.net/npm/immer"></script>
+    ⚠️ When using a CDN, it is best to check the url in your browser and see what version it resolves to, so that your users aren't accidentally served a newer version in the future when updates are release. So use an url like: https://unpkg.com/immer@6.0.3/dist/immer.umd.production.min.js instead. Substitute production.min with development in the URL for a development build.
+#+END_QUOTE
+
+
+The following features can be opt-in to:
+Source: [2021-11-16 Tue],
+ #+BEGIN_QUOTE
+|----------------------------+--------------------|
+| Feature                    | Method to call     |
+|----------------------------+--------------------|
+| ES 5 support               | enableES5()        |
+| ES2015 Map and Set support | enableMapSet()     |
+| JSON Patch support         | enablePatches()    |
+| All of the above           | enableAllPlugins() |
+|----------------------------+--------------------|
+
+For example, if you want to use produce on a Map, you need to enable this feature once during the start of your application:
+#+END_QUOTE
+In your application's entrypoint
+
+#+begin_src js :tangle try-next/pages/immer/mapset.js
+const {enableMapSet} = require("immer")
+
+enableMapSet()
+#+end_src
+...Later
+
+#+begin_src js :tangle try-next/pages/immer/mapset.js
+const produce = require('immer');
+
+const usersById_v1 = new Map([
+    ["Thaen", { name: "Nopanun Laochunhanun", country: "NL" }]
+])
+
+const usersById_v2 = produce(usersById_v1, draft => {
+    draft.get("Thaen").country = "TH"
+})
+
+module.exports = function MapsetPage() {
+    return { v1: usersById_v1, v2: usersById_v2 }
+}
+#+end_src
+#+begin_src js :tangle try-next/pages/immer/mapset.test.js
+const usersById = require('./mapset');
+
+expect(usersById().v1.get("Thaen").country).toBe("NL")
+expect(usersById().v2.get("Thaen").country).toBe("TH")
+#+end_src
+
+* JEST
+** Getting Started
+:PROPERTIES:
+:ID:       00e98a80-1f86-472d-af7c-01fbf2ecffba
+:END:
+Install as dev Dependency
+
+#+begin_src js :tangle try-next/pages/sum.js
+function sum(a, b) {
+  return a + b;
+}
+module.exports = sum;
+#+end_src
+#+begin_src js :tangle try-next/pages/sum.test.js
+const sum = require('./sum');
+
+test('adds 1 + 2 to eq 3', () => {
+    expect(sum(1, 2)).toBe(3);
+});
 #+end_src
