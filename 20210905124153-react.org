@@ -16,15 +16,25 @@ Amazing. I've been learning MERN development for the last year but this was the 
 #+END_QUOTE
 * Useful information
 Use function based components for Redux.
-* Immer
-Source: [2021-11-15 Mon], https://immerjs.github.io/immer/
- #+BEGIN_QUOTE
-Immer: Immutability the easy way
-#+END_QUOTE
+
+* [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/")][Immer]]
+:PROPERTIES:
+:ID:       b304b7f0-bd46-4279-8235-6d8d0dee8864
+:ROAM_REFS: "Source: [2021-11-15 Mon], https://immerjs.github.io/immer/"
+:END:
+
+#+begin_quote
+
+[[elisp:(evil-collection-xwidget-webkit-new-tab "//medium.com/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3")][Immer: Immutability the easy way]]
+
+#+end_quote
+
 ** Introduction
 
 *** A quick example for comparison
+
 **** Without Immer
+
 #+begin_src js
 const baseState = [
     {
@@ -51,6 +61,7 @@ console.log(nextState)
 : [{ title: 'Learn TypeScript '(\, done:) true } (\, {) title: 'Try Immer '(\, done:) true } (\, {) title: 'Tweet about it '}]
 
 **** With Immer
+
 #+begin_src js :tangle try-next/pages/immer/index.js
 import produce from "immer"
 
@@ -86,31 +97,53 @@ export default function ImmerPage() {
 
 #+RESULTS:
 
-*** How Immer works
-#+BEGIN_QUOTE
-Using Immer is like having a personal assistant. The assistant takes a letter (the current state) and gives you a copy (draft) to jot changes onto. Once you are done, the assistant will take your draft and produce the real immutable, final letter for you (the next state).
-#+END_QUOTE
-Source: [2021-11-16 Tue],
+*** [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/#how-immer-works")][How Immer works]]
+:PROPERTIES:
+:ID:       909646c1-fc73-4e14-b2d2-1c2c681df274
+:ROAM_REFS: "Source: [2021-11-16 Tue], [[https://immerjs.github.io/immer/#how-immer-works][How Immer works]]"
+:END:
+
+#+begin_quote
+
+Using [[id:b304b7f0-bd46-4279-8235-6d8d0dee8864][Immer]] is like having a personal assistant. The assistant takes a
+letter (the current state) and gives you a copy (draft) to jot changes
+onto. Once you are done, the assistant will take your draft and produce
+the real immutable, final letter for you (the next state).
+
+#+end_quote
 
 ** Installation
-:PROPERTIES:
-:ID:       fb2f5e23-99fc-4d67-9371-906d72ccc335
-:END:
-Immer can be installed as a direct dependency, and will work in any ES5 environment:
 
- #+BEGIN_QUOTE
+[[id:b304b7f0-bd46-4279-8235-6d8d0dee8864][Immer]] can be installed as a direct dependency, and will work in any ES5
+environment:
+
+#+begin_quote
+
 Yarn: ~yarn add immer~
-NPM: ~npm install immer~
-CDN: Exposed global is immer
-    Unpkg: <script src="https://unpkg.com/immer"></script>
-    JSDelivr: <script src="https://cdn.jsdelivr.net/npm/immer"></script>
-    ⚠️ When using a CDN, it is best to check the url in your browser and see what version it resolves to, so that your users aren't accidentally served a newer version in the future when updates are release. So use an url like: https://unpkg.com/immer@6.0.3/dist/immer.umd.production.min.js instead. Substitute production.min with development in the URL for a development build.
-#+END_QUOTE
 
+NPM: ~npm install immer~
+
+CDN: Exposed global is immer
+
+Unpkg: <script src="https://unpkg.com/immer"></script>
+
+JSDelivr: <script src="https://cdn.jsdelivr.net/npm/immer"></script>
+
+⚠ When using a CDN, it is best to check the url in your browser and see
+what version it resolves to, so that your users aren't accidentally served
+a newer version in the future when updates are release. So use an url
+like: https://unpkg.com/immer@6.0.3/dist/immer.umd.production.min.js
+instead. Substitute production.min with development in the URL for a
+development build.
+
+#+end_quote
 
 The following features can be opt-in to:
-Source: [2021-11-16 Tue],
- #+BEGIN_QUOTE
+
+Source: [2021-11-16 Tue], [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/installation#pick-your-immer-version")][Pick your Immer version]]
+
+ #+begin_quote
+
 |----------------------------+--------------------|
 | Feature                    | Method to call     |
 |----------------------------+--------------------|
@@ -119,16 +152,19 @@ Source: [2021-11-16 Tue],
 | JSON Patch support         | enablePatches()    |
 | All of the above           | enableAllPlugins() |
 |----------------------------+--------------------|
+For example, if you want to use produce on a Map, you need to enable this
+feature once during the start of your application:
 
-For example, if you want to use produce on a Map, you need to enable this feature once during the start of your application:
-#+END_QUOTE
-In your application's entrypoint
+#+end_quote
+
+ In your application's entrypoint
 
 #+begin_src js :tangle try-next/pages/immer/mapset.js
 const {enableMapSet} = require("immer")
 
 enableMapSet()
 #+end_src
+
 ...Later
 
 #+begin_src js :tangle try-next/pages/immer/mapset.js
@@ -146,6 +182,7 @@ module.exports = function MapsetPage() {
     return { v1: usersById_v1, v2: usersById_v2 }
 }
 #+end_src
+
 #+begin_src js :tangle try-next/pages/immer/mapset.test.js
 const usersById = require('./mapset');
 
@@ -154,10 +191,12 @@ expect(usersById().v2.get("Thaen").country).toBe("TH")
 #+end_src
 
 * JEST
-** Getting Started
 :PROPERTIES:
 :ID:       00e98a80-1f86-472d-af7c-01fbf2ecffba
 :END:
+
+** Getting Started
+
 Install as dev Dependency
 
 #+begin_src js :tangle try-next/pages/sum.js
@@ -166,6 +205,7 @@ function sum(a, b) {
 }
 module.exports = sum;
 #+end_src
+
 #+begin_src js :tangle try-next/pages/sum.test.js
 const sum = require('./sum');
 
