@@ -1,0 +1,110 @@
+:PROPERTIES:
+:ID:       dc7036c1-c27b-47b2-b027-f59eecb36f56
+:END:
+#+title: typescript
+* Generics
+#+name: tmp
+#+begin_src typescript
+type numArray = Array<number>
+type arr = Array<string>
+
+const last = <T>(arr: T[]): T => {
+   return arr[arr.length - 1];
+}
+
+const l = last([1,2,3])
+const l2 = last(["a","b","c"])
+const l3 = last<string>(["a","b","c"])
+const makeArr = <X, Y>(x: X, y: Y): [X, Y] => {
+    return [x, y];
+}
+
+const v = makeArr(5,6)
+const v2 = makeArr("a","b")
+const v3 = makeArr<string | null, number>("a",5)
+#+end_src
+
+makeArr: 2 generics, return, explicitly overwrite type inference, default value:
+#+name: tmp2
+#+begin_src typescript
+const makeArr = <X, Y=number>(x: X, y: Y): [X, Y] => [x, y]
+const v3 = makeArr<string | null>("a",5)
+#+end_src
+
+To constrain what the user can actually pass to the generic:
+#+name: tmp3
+#+begin_src typescript
+const makeFullName = <T extends {firstName: string; lastName: string}>(obj: T) => {
+    return {
+        ...obj,
+        fullName: obj.firstName + '' + obj.lastName
+    }
+}
+
+const v4 = makeFullName({ firstName: "bob", lastName: "junior", age: 15 })
+// const v5 = makeFullName({ another: "bob", lastName: "junior", age: 15 })
+#+end_src
+
+To use generic with interface:
+#+name: tmp4
+#+begin_src typescript
+interface Tab {
+    id: string
+    position: number
+    data: any
+}
+#+end_src
+We don't really know what this data could be, maybe some tab we want to have one value and another tab we want different values so this is another one where we could either put the word ~any~ or maybe we want to take a generic. So if we want to take a generic we can do like this
+#+begin_src typescript
+interface Tab<T> {
+    id: string
+    position: number
+    data: T
+}
+
+type NumberTab = Tab<number>
+type StringTab = Tab<string>
+#+end_src
+From line 62: this is equivalent to
+#+begin_src typescript
+type NumberTab = {
+    id: string
+    position: number
+    data: number
+}
+#+end_src
+This comes in handy when you kind of want to make a few different types of types that inherit from kind of a base likes above examples
+
+Let's get into some more practical examples on react.
+#+name: app.tsx
+#+begin_src typescript :tangle try-next/pages/app.tsx
+import React, { useState } from 'react';
+
+type Props = {
+    name: string
+}
+const HelloWorld: React.VFC<Props> = ({ name }) => {
+    const [state] = useState<{ fullname: string | null }>({ fullname: "" })
+    
+    return <div>hello {name}</div>
+}
+
+// JSX generic
+type FormProps<T> = {
+    values: T;
+    children: (values: T) => JSX.Element // A render prop
+}
+const Form = <T extends {}>({ values, children }: FormProps<T>) => {
+    return children(values)
+}
+
+const App: React.VFC = () => (
+    <div className="App">
+        <Form<{ firstName: string | null }> values={{ firstName: "bob" }}>
+            {(values) => <div>hello {values.firstName}</div>}
+        </Form>
+    </div>
+)
+export default App
+#+end_src
+At line 83: the angle brackets there is a case where react created type definitions or interfaces where they take a generic and their generic is what the props are because the props are going to be generic they don't know ahead of time all the data that you want to pass into your component. So in this case we can say we want our component here to take a name and now we get type definition of the name there
