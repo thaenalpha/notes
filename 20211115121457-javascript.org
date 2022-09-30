@@ -51,7 +51,7 @@ Maybe it can be interesting to you too.
 
 These are some resources I found:
 
-- [[elisp:(evil-collection-xwidget-webkit-new-tab "//medium.com/javascript-scene/composing-software-the-book-f31c77fc3ddc")][Composing Software: The Book. Note: This is part of the “Composing… | by Eric...]]
+- [[elisp:(evil-collection-xwidget-webkit-new-tab "//sc.vern.cc/javascript-scene/composing-software-the-book-f31c77fc3ddc")][Composing Software: The Book. Note: This is part of the “Composing… | by Eric...]]
 
 - [[elisp:(evil-collection-xwidget-webkit-new-tab "//github.com/MostlyAdequate/mostly-adequate-guide")][GitHub - MostlyAdequate/mostly-adequate-guide: Mostly adequate guide to FP (i...]]
 
