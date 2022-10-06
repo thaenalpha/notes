@@ -1,0 +1,5 @@
+ytc="https://www.youtube.com/c"
+#+begin_src sh :async t :results output list :noweb yes :wrap
+youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -rj '"[[https://youtu.be/\(.id)][\(.title)]]\n"'
+#+end_src
+#+filetags: :videos:youtube-channel:

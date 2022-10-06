@@ -1,0 +1,86 @@
+#+startup: nofold
+
+Description paragraph
+
+#+begin_quote
+    This is a quote
+#+end_quote
+
+* Table of Contents :TOC:
+- [[#release-notes][Release Notes]]
+- [[#documentation][Documentation]]
+  - [[#getting-started][Getting Started]]
+  - [[#contributing][Contributing]]
+  - [[#workflow-tips-tricks--tutorials][Workflow Tips, Tricks & Tutorials]]
+  - [[#module-appendix][Module Appendix]]
+- [[#frequently-asked-questions][Frequently Asked Questions]]
+  - [[#general][General]]
+  - [[#configuration][Configuration]]
+  - [[#package-management][Package Management]]
+  - [[#defaults][Defaults]]
+  - [[#common-issues][Common Issues]]
+  - [[#contributing-1][Contributing]]
+- [[#community-resources][Community Resources]]
+  - [[#asking-for-help][Asking for help]]
+  - [[#project-roadmap][Project roadmap]]
+  - [[#tutorials--guides][Tutorials & guides]]
+  - [[#projects-that-supportcomplement-][Projects that support/complement …]]
+  - [[#similar-projects][Similar projects]]
+
+* TODO Release Notes
+
+* Documentation
+** [[file:getting_started.org][Getting Started]]
+- [[file:getting_started.org::*Install][Install]]
+- [[file:getting_started.org::*Update & Rollback][Update & Rollback]]
+- [[file:getting_started.org::*Configure][Configure]]
+- [[file:getting_started.org::*Migrate][Migrate]]
+- [[file:getting_started.org::*Troubleshoot][Troubleshoot]]
+
+** TODO [[file:contributing.org][Contributing]]
+- [[file:contributing.org::*Where can I help?][Where can I help?]]
+- Reporting issues
+- Suggesting features, keybinds and enhancements
+- Contributing code or documentation
+- Other ways to support Doom Emacs
+- Special thanks
+
+** TODO Workflow Tips, Tricks & Tutorials
+
+** Module Appendix
+
+* Frequently Asked Questions
+** General
+** Configuration
+** Package Management
+** Defaults
+** Common Issues
+** Contributing
+
+* Community Resources
+** Asking for help
+- _Link to support channels_
+
+** TODO  Project roadmap
+- _Development roadmap_
+- _Upstream bugs_
+
+** Tutorials & guides
++ *Topic*
+  - (videos) _Link to videos playlist_ by …
+  - _Link to tutorials with description_
+  - (video) _Link to video_ by …
++ *Topic2*
+  - Description - https://example.com
+  - Quick crash courses/tutorial on Subtopic:
+    - https://example.com
+  - Workflows for customizing Topic and its packages:
+    - https://example.com
+  - *Tools in Topic2*
+    - [[https://www.emacswiki.org/emacs/Calc_Tutorials_by_Andrew_Hyatt][How to use X]]
+
+** Projects that support/complement …
++ _org/project1_
+
+** Similar projects
++ _org/project2_
