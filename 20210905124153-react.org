@@ -18,7 +18,6 @@
 : Beginner's Tutorial for React JavaScript Library
 #+source: <2022-08-27 Sat 18:09>, [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=bMknfKXIFA8")][YouTube]]
 [[yt:bMknfKXIFA8][React Course - Beginner's Tutorial for React JavaScript Library {2022} - YouTube]]
-  - [[elisp:(evil-collection-xwidget-webkit-new-tab "scrimba.com/learn/learnreact")][Scrimba]]
 
 ** [[id:3c472463-51da-4766-b7aa-52b07cec96f0][Full React Course 2020]]
 : Learn Fundamentals, Hooks, Context API, React Router, Custom Hooks
@@ -30,16 +29,6 @@ API, React Router, Custom Hooks - YouTube]]
 : Build a social media app
 #+source: [2021-09-05 Sun], [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=m_u6P5k0vP0")][YouTube]]
 [[yt:m_u6P5k0vP0][Full Stack React & Firebase Tutorial - Build a social media app - YouTube]]
-#+begin_quote
-
-Amazing. I've been learning MERN development for the last year but this was the
-first app I've built both front and backend together all thanks to you. I
-learned some very important lessons, one being that Redux is outdated thanks for
-function based components. Secondly this project gave me a lot of motivation and
-confidence. I feel so much more prepared now. Thank you
-
-#+end_quote
-— one comment on YouTube.
 
 * Useful information
 Use function based components for Redux.

@@ -4,3 +4,15 @@
 #+title: Full Stack React & Firebase Tutorial
 #+filetags: :youtube:
 #+subtitle: Build a social media app
+* Course Feedback
+#+begin_quote
+
+Amazing. I've been learning MERN development for the last year but this was the
+first app I've built both front and backend together all thanks to you. I
+learned some very important lessons, one being that Redux is outdated thanks for
+function based components. Secondly this project gave me a lot of motivation and
+confidence. I feel so much more prepared now. Thank you
+
+#+end_quote
+— one comment on YouTube.
+

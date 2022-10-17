@@ -7,6 +7,9 @@
 #+author: Bob Ziroll
 Learn to "think in React".
 
+* Description
+  - [[elisp:(evil-collection-xwidget-webkit-new-tab "scrimba.com/learn/learnreact")][Scrimba]]
+
 * Why React so popular?
  * React is composable.
   #+begin_src js :dir ~/projects/react-cdn/ :tangle no
