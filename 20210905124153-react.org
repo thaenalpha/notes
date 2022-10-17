@@ -33,7 +33,7 @@ API, React Router, Custom Hooks - YouTube]]
 * Useful information
 Use function based components for Redux.
 
-* [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/")][Immer]]
+* [[elisp:(evil-collection-xwidget-webkit-new-tab "immerjs.github.io/immer/")][Immer]]
 :PROPERTIES:
 :ID:       b304b7f0-bd46-4279-8235-6d8d0dee8864
 :ROAM_REFS: "Source: [2021-11-15 Mon], https://immerjs.github.io/immer/"
@@ -41,7 +41,7 @@ Use function based components for Redux.
 
 #+begin_quote
 
-[[elisp:(evil-collection-xwidget-webkit-new-tab "//sc.vern.cc/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3")][Immer: Immutability the easy way]]
+[[elisp:(evil-collection-xwidget-webkit-new-tab "sc.vern.cc/@mweststrate/introducing-immer-immutability-the-easy-way-9d73d8f71cb3")][Immer: Immutability the easy way]]
 
 #+end_quote
 
@@ -113,7 +113,7 @@ export default function ImmerPage() {
 
 #+RESULTS:
 
-*** [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/#how-immer-works")][How Immer works]]
+*** [[elisp:(evil-collection-xwidget-webkit-new-tab "immerjs.github.io/immer/#how-immer-works")][How Immer works]]
 :PROPERTIES:
 :ID:       909646c1-fc73-4e14-b2d2-1c2c681df274
 :ROAM_REFS: "Source: [2021-11-16 Tue], [[https://immerjs.github.io/immer/#how-immer-works][How Immer works]]"
@@ -156,8 +156,7 @@ development build.
 
 The following features can be opt-in to:
 
-Source: [2021-11-16 Tue], [[elisp:(evil-collection-xwidget-webkit-new-tab "//immerjs.github.io/immer/installation#pick-your-immer-version")][Pick your Immer version]]
-
+#+source: [2021-11-16 Tue], [[elisp:(evil-collection-xwidget-webkit-new-tab "immerjs.github.io/immer/installation#pick-your-immer-version")][Pick your Immer version]]
  #+begin_quote
 
 |----------------------------+--------------------|
