@@ -7,12 +7,23 @@
 - Has well over 100k starts on GitHub
 - Is maintained by Facebook
 
-* tutorial
-** [[https://www.youtube.com/watch?v=m_u6P5k0vP0][Full Stack React & Firebase Tutorial - Build a social media app - YouTube]]
-Source: [2021-09-05 Sun],
- #+BEGIN_QUOTE
-Amazing. I've been learning MERN development for the last year but this was the first app I've built both front and backend together all thanks to you. I learned some very important lessons, one being that Redux is outdated thanks for function based components. Secondly this project gave me a lot of motivation and confidence. I feel so much more prepared now. Thank you
-#+END_QUOTE
+* Courses :video:
+
+** [[id:7d9c18ef-9a59-4fd2-9eb3-7154ab7eaaec][Full Stack React & Firebase Tutorial]]
+: Build a social media app
+#+source: [2021-09-05 Sun], [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=m_u6P5k0vP0")][YouTube]]
+[[yt:m_u6P5k0vP0][Full Stack React & Firebase Tutorial - Build a social media app - YouTube]]
+#+begin_quote
+
+Amazing. I've been learning MERN development for the last year but this was the
+first app I've built both front and backend together all thanks to you. I
+learned some very important lessons, one being that Redux is outdated thanks for
+function based components. Secondly this project gave me a lot of motivation and
+confidence. I feel so much more prepared now. Thank you
+
+#+end_quote
+— one comment on YouTube.
+
 * Useful information
 Use function based components for Redux.
 

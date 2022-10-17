@@ -1,0 +1,6 @@
+:PROPERTIES:
+:ID:       7d9c18ef-9a59-4fd2-9eb3-7154ab7eaaec
+:END:
+#+title: Full Stack React & Firebase Tutorial
+#+filetags: :youtube:
+#+subtitle: Build a social media app
