@@ -2,7 +2,6 @@
 :ID:       8b81de25-b0b5-435c-99a2-cbebf03937fc
 :END:
 #+title: React
-#+filetags: :video:
 - Was first released in 2013
 - Was original created by Jordan Walke
 - Has well over 100k starts on GitHub
