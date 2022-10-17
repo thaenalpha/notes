@@ -9,6 +9,18 @@
 
 * Courses :video:
 
+** [[id:3e6ceb5f-c958-4a4b-aa54-fae4fb040816][🔴 Let's build a Modern Portfolio with NEXT.JS]]
+: Framer Motion, Tailwind CSS, Sanity.io, React
+#+source: [2022-11-28 Mon 21:24], CloudTube
+[[yt:urgi2iz9P6U][🔴 Let's build a Modern Portfolio with NEXT.JS (Framer Motion, Tailwind CSS,
+S...]]
+
+** [[id:1fa1a1e7-284c-45ff-8c4b-2d08438d41d6][Build and Deploy a React Admin Dashboard App]]
+: With Theming, Tables, Charts, Calendar, Kanban and More
+#+source: [2022-11-29 Tue 01:00], YouTube
+[[yt:jx5hdo50a2M][Build and Deploy a React Admin Dashboard App With Theming, Tables, Charts,
+Calendar, Kanban and More - YouTube]]
+
 ** [[id:056cc821-5d05-48fe-b52f-1783876f4fe7][React Course For Beginners]]
 : Learn React in 8 Hours
 #+source: <2022-10-06 Thu 00:00>, [[https://www.youtube.com/watch?v=f55qeKGgB_M][YouTube]]

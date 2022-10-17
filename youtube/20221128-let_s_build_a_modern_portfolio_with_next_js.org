@@ -1,0 +1,8 @@
+:PROPERTIES:
+:ID:       3e6ceb5f-c958-4a4b-aa54-fae4fb040816
+:ROAM_REFS: https://tube.cadence.moe/watch?v=urgi2iz9P6U
+:END:
+#+title: 🔴 Let's build a Modern Portfolio with NEXT.JS
+#+subtitle: Framer Motion, Tailwind CSS, Sanity.io, React
+#+filetags: :nextjs:portfolio:tutorial:javascript:sanityio:cms:beginner:tailwindcss:framermotion:
+#+author: Sonny Sangha
