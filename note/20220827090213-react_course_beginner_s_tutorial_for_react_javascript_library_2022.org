@@ -1,0 +1,96 @@
+:PROPERTIES:
+:ID:       bab0ab23-0060-465e-942e-546d875bbd1e
+:ROAM_REFS: "[[https://youtube.com/watch?v=bMknfKXIFA8][freeCodeCamp.org - YouTube]]" https://scrimba.com/learn/learnreact
+:END:
+#+title: React Course [2022]
+#+subtitle: Beginner's Tutorial for React JavaScript Library
+#+author: Bob Ziroll
+Learn to "think in React".
+
+* Why React so popular?
+ * React is composable.
+  #+begin_src js :dir ~/projects/react-cdn/ :tangle no
+function Navbar() {
+    return (
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <a className="navbar-brand" href="#">Navbar</a>
+            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul className="navbar-nav mr-auto">
+                <li className="nav-item active">
+                    <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link" href="#">Link</a>
+                </li>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a className="dropdown-item" href="#">Action</a>
+                    <a className="dropdown-item" href="#">Another action</a>
+                    <div className="dropdown-divider"></div>
+                    <a className="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link disabled" href="#">Disabled</a>
+                </li>
+                </ul>
+                <form className="form-inline my-2 my-lg-0">
+                    <input className="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" />
+                    <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    )
+}
+
+function Main(){
+    return (
+        <div id="main">
+          <h1>Hello world!!!</h1>
+        </div>
+    )
+}
+
+ReactDOM.render(
+    <div><Navbar /><Main /></div>,
+    document.getElementById("root")
+)
+#+end_src
+ * React is _declarative_.
+   : What should be done? “Just tell me what to do”
+   Below is an _imperative_ way to program:
+   : How should it be done? “Describe to me every stop on how to do something”
+   #+begin_src js :dir ~/projects/react-cdn :tangle ~/projects/react-cdn/index.js
+// ReactDOM.render(<h1>Hello, React!</h1>, document.getElementById("root"))
+
+/*
+Challenge - recreate the above line of code in vanilla JS by creating and
+appending an h1 to our div#root (without using innerHTML).
+
+- Create a new h1 element
+- Give it some textContent
+- Give it a class name of "header"
+- append it as a child of the div#root
+
+*/
+const h1 = document.createElement("h1")
+h1.textContent = "This is an imperative way to program!"
+h1.className = "header"
+document.getElementById("root").appendChild(h1)
+   #+end_src
+
+   #+RESULTS:
+
+* JSX
+Is kind like of a function that, when it runs, return us objects that react can
+interpret and use to create actual elements that get put on the screen for us.
+#+begin_src js
+
+#+end_src

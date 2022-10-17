@@ -1,0 +1,9 @@
+:PROPERTIES:
+:ID:       056cc821-5d05-48fe-b52f-1783876f4fe7
+:ROAM_REFS: [[https://www.youtube.com/watch?v=f55qeKGgB_M][YouTube]]
+:END:
+#+title:       React Course For Beginners
+#+subtitle:    Learn React in 8 Hours
+#+author:      PedroTech
+#+filetags: :typescript:reactjs:coding:tutorial:
+#+captured_on: [2022-10-06 Thu 17:16]

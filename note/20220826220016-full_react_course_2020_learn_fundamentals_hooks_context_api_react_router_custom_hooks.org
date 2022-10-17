@@ -1,0 +1,22 @@
+:PROPERTIES:
+:ID:       3c472463-51da-4766-b7aa-52b07cec96f0
+:END:
+#+title: Full React Course 2020
+#+filetags: :react:video:tutorial:youtube:
+#+subtitle: Learn Fundamentals, Hooks, Context API, React Router, Custom Hooks
+#+author: John Smilga
+#+date: Tue Oct 06 2020
+
+Learn the basics of React in this comprehensive course. You will learn about
+fundamental, hooks, context API, react router, custom hooks, and more.
+
+📹 React projects video:
+[[yt:a_7Z7C_JCyo]]
+- Birthday Reminder
+- Tours
+
+✏ Course from John Smilga of the Coding Addict channel. Check out his channel:
+[[id:f7e84246-93a9-481f-9858-1a3eb37f279a][CodingAddict]]
+
+* Basics
+This project was bootstrapped with CRA

@@ -9,6 +9,23 @@
 
 * Courses :video:
 
+** [[id:056cc821-5d05-48fe-b52f-1783876f4fe7][React Course For Beginners]]
+: Learn React in 8 Hours
+#+source: <2022-10-06 Thu 00:00>, [[https://www.youtube.com/watch?v=f55qeKGgB_M][YouTube]]
+[[yt:f55qeKGgB_M][React Course For Beginners - Learn React in 8 Hours - YouTube]]
+
+** [[id:bab0ab23-0060-465e-942e-546d875bbd1e][React Course [2022]​]]
+: Beginner's Tutorial for React JavaScript Library
+#+source: <2022-08-27 Sat 18:09>, [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=bMknfKXIFA8")][YouTube]]
+[[yt:bMknfKXIFA8][React Course - Beginner's Tutorial for React JavaScript Library {2022} - YouTube]]
+  - [[elisp:(evil-collection-xwidget-webkit-new-tab "scrimba.com/learn/learnreact")][Scrimba]]
+
+** [[id:3c472463-51da-4766-b7aa-52b07cec96f0][Full React Course 2020]]
+: Learn Fundamentals, Hooks, Context API, React Router, Custom Hooks
+#+source: <2022-08-26 Fri 21:58>, [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=4UZrsTqkcW4")][YouTube]]
+[[yt:4UZrsTqkcW4][Full React Course 2020 - Learn Fundamentals, Hooks, Context
+API, React Router, Custom Hooks - YouTube]]
+
 ** [[id:7d9c18ef-9a59-4fd2-9eb3-7154ab7eaaec][Full Stack React & Firebase Tutorial]]
 : Build a social media app
 #+source: [2021-09-05 Sun], [[elisp:(evil-collection-xwidget-webkit-new-tab "www.youtube.com/watch?v=m_u6P5k0vP0")][YouTube]]
