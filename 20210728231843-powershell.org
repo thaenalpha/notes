@@ -2,6 +2,21 @@
 :ID:       5a79d2fc-d003-460b-9a2c-83ecec922318
 :END:
 #+title: Powershell
+* What is Powershell?
+#+source: [2022-10-16 Sun], https://www.youtube.com/watch?v=INUHCQST7CU
+#+begin_quote
+It's a JIT scripting language that runs on top of the .NET CLR. It uses a unique
+Verb-Noun naming scheme for functions, and if you make a function with an
+unapproved verb, it might throw a warning. Variables begin with dollar signs,
+like in PHP, and being a scripting language you don't need to declare them. Nor
+do you need to import modules, unless you're digging very deep into .NET.
+Speaking of which, all of .NET's libraries are available for use. And then
+there's the optional type system, used by prepending a variable with the [type]
+in brackets. As a bonus, all objects are .NET Objects, and most code also works
+as C# code, so if you really like your script it should be pretty easy to
+compile.
+#+end_quote
+
 * How Powershell read input
 Captured On: [2021-07-21 Wed]
 
