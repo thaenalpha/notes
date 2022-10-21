@@ -1,5 +1,24 @@
-ytc="https://www.youtube.com/c"
-#+begin_src sh :async t :results output list :noweb yes :wrap
+#+filetags: :videos:youtube-channel:
+# A plain list of links to all the videos in this channel.
+#+name: Video Links
+#+begin_src sh :results output list :noweb yes :wrap
 youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -rj '"[[https://youtu.be/\(.id)][\(.title)]]\n"'
 #+end_src
-#+filetags: :videos:youtube-channel:
+
+# All video entries consist of links and its thumbnail.
+#+name: Videos
+#+begin_src sh :results output raw :noweb yes :wrap
+youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -rj \
+    '"* \(.title)\n\n[[yt:\(.id)]]\n\n  - [[elisp:(evil-collection-xwidget-webkit-new-tab \"yewtu.be/watch?v=\(.id)\")][Invidious]] / [[elisp:(browse-url \"yattee://watch?v=\(.id)\")][Yattee]]\n\n"'
+#+end_src
+
+# All playlist entries with src_block to execute for its content.
+#+name: Playlists
+#+begin_src sh :results output raw :noweb yes :wrap
+youtube-dl -j --flat-playlist "${ytc}/${name}/playlists" | jq -rj\
+    '"* \(.title)\n#+header: :var uri=\"playlist?list=\(.id)\"
+,#+begin_src sh :results output raw :wrap
+youtube-dl -j --flat-playlist \"https://youtube.com/${uri}\" | jq -rj\\
+    '"'"'\"+ \\(.title)\\n\\n  [[yt:\\(.id)]]\\n\\n  - [[elisp:(evil-collection-xwidget-webkit-new-tab \\\"yewtu.be/watch?v=\\(.id)\\\")][Invidious]]/[[elisp:(browse-url \\\"yattee://watch?v=\\(.id)\\\")][Yattee]]\\n\\n\"'"'"'
+,#+end_src\n"'
+#+end_src
