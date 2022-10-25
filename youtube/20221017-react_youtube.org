@@ -23,7 +23,7 @@ def formattime:
      d : ($d|f(":"))}
   | "\(.d)\(.h)\(.m)\(.s)"[0:]
 ;
-"* \(.title)\n: \(.uploader)
+"* \(.title)\n#+source: \(.uploader)
 [[yt:\(.id)][YouTube]] \(.duration | formattime)\n  - [[elisp:(evil-collection-xwidget-webkit-new-tab \"yewtu.be/watch?v=\(.id)\")][Invidious]] / [[elisp:(browse-url \"yattee://watch?v=\(.id)\")][Yattee]]\n"
 #+end_src
 #+header: :var uri="playlist?list=PLRVzUdOe-XKfcsWbDn8cZRNR87MqidHfZ"
@@ -37,7 +37,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       ee711f51-9453-4fd7-a5ee-63a823bb60ec
 :END:
-: Wix Engineering Tech Talks
+#+source: Wix Engineering Tech Talks
 [[yt:4rU0IGEt6OQ][YouTube]] 39:05
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=4rU0IGEt6OQ")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=4rU0IGEt6OQ")][Yattee]]
 
@@ -45,12 +45,12 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       87fa813b-293f-4c77-a014-0473af5f34dd
 :END:
-: developedbyed
+#+source: developedbyed
 [[yt:U9T6YkEDkMo][YouTube]] 48:10
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=U9T6YkEDkMo")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=U9T6YkEDkMo")][Yattee]]
 
 * Full Stack React & Firebase Tutorial - Build a social media app
-: freeCodeCamp.org
+#+source: freeCodeCamp.org
 [[yt:m_u6P5k0vP0][YouTube]] 12:05:31
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=m_u6P5k0vP0")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=m_u6P5k0vP0")][Yattee]]
 
@@ -58,7 +58,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       27c3f3f1-a043-4db8-b5b8-7fd3eb24a965
 :END:
-: PasaComputer
+#+source: PasaComputer
 [[yt:Qb1bHuyc4XI][YouTube]] 13:47
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=Qb1bHuyc4XI")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=Qb1bHuyc4XI")][Yattee]]
 
@@ -66,7 +66,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       008d1482-7721-482d-90e4-0fd215c7597f
 :END:
-: AmateurCoder
+#+source: AmateurCoder
 [[yt:54BIg7PnD1I][YouTube]] 22:06
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=54BIg7PnD1I")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=54BIg7PnD1I")][Yattee]]
 
@@ -74,7 +74,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       07b4cd15-68a9-42d5-b97c-0806fdc063b3
 :END:
-: Make Programming Fun Again
+#+source: Make Programming Fun Again
 [[yt:8MCmTiB3g6c][YouTube]] 31:47
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=8MCmTiB3g6c")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=8MCmTiB3g6c")][Yattee]]
 
@@ -82,7 +82,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       693e4e65-79d8-4e6b-b4a6-01ae755625b5
 :END:
-: Patiphan Phengpao
+#+source: Patiphan Phengpao
 [[yt:FmAFtntRKVI][YouTube]] 47:31
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=FmAFtntRKVI")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=FmAFtntRKVI")][Yattee]]
 
@@ -90,7 +90,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       9edf88b3-3fa0-4fc6-8ee6-60b55969879a
 :END:
-: Clever Programmer
+#+source: Clever Programmer
 [[yt:DQfeB_FKKkc][YouTube]] 3:52:50
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=DQfeB_FKKkc")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=DQfeB_FKKkc")][Yattee]]
 
@@ -98,7 +98,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       a1e43c7f-53e6-4ac7-bd63-ec956b34e70f
 :END:
-: Ben Awad
+#+source: Ben Awad
 [[yt:I6ypD7qv3Z8][YouTube]] 13:59:03
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=I6ypD7qv3Z8")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=I6ypD7qv3Z8")][Yattee]]
 
@@ -106,12 +106,12 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       d290885e-46cd-4be4-a4d1-d186a3022dbb
 :END:
-: PasaComputer
+#+source: PasaComputer
 [[yt:mXjxKhWNHNo][YouTube]] 57:51
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=mXjxKhWNHNo")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=mXjxKhWNHNo")][Yattee]]
 
 * Full React Course 2020 - Learn Fundamentals, Hooks, Context API, React Router, Custom Hooks
-: freeCodeCamp.org
+#+source: freeCodeCamp.org
 [[yt:4UZrsTqkcW4][YouTube]] 10:07:53
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=4UZrsTqkcW4")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=4UZrsTqkcW4")][Yattee]]
 
@@ -119,7 +119,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       3c2a9b8a-7a0f-43a5-aaf0-734808e2fae2
 :END:
-: freeCodeCamp.org
+#+source: freeCodeCamp.org
 [[yt:a_7Z7C_JCyo][YouTube]] 9:07:48
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=a_7Z7C_JCyo")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=a_7Z7C_JCyo")][Yattee]]
 
@@ -127,7 +127,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       39241606-cc9c-422b-ad8c-35d136ed166a
 :END:
-: JavaScript Mastery
+#+source: JavaScript Mastery
 [[yt:aibtHnbeuio][YouTube]] 1:21:58
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=aibtHnbeuio")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=aibtHnbeuio")][Yattee]]
 
@@ -135,7 +135,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       aea91aae-4190-4bfd-8e4a-f73fcc92a55d
 :END:
-: Zaiste Programming
+#+source: Zaiste Programming
 [[yt:blVDR3l7dQ0][YouTube]] 16:53
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=blVDR3l7dQ0")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=blVDR3l7dQ0")][Yattee]]
 
@@ -143,7 +143,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       a32705bb-0601-4ff7-bc74-335630cf9ffb
 :END:
-: PedroTech
+#+source: PedroTech
 [[yt:YyUWW04HwKY][YouTube]] 32:51
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=YyUWW04HwKY")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=YyUWW04HwKY")][Yattee]]
 
@@ -151,7 +151,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       7ac61afa-e995-43ba-b4ba-ebc5215e5b04
 :END:
-: Traversy Media
+#+source: Traversy Media
 [[yt:mTz0GXj8NN0][YouTube]] 1:09:45
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=mTz0GXj8NN0")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=mTz0GXj8NN0")][Yattee]]
 
@@ -159,7 +159,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       fd6724dc-70e6-464e-b8ef-b6605684f70b
 :END:
-: JSConf
+#+source: JSConf
 [[yt:MmQvVkYMi8g][YouTube]] 37:06
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=MmQvVkYMi8g")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=MmQvVkYMi8g")][Yattee]]
 
@@ -167,7 +167,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       ddf33a8d-7308-4d03-98a2-2fad877c15c0
 :END:
-: Zaiste Programming
+#+source: Zaiste Programming
 [[yt:w1GMoh__U_o][YouTube]] 14:41
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=w1GMoh__U_o")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=w1GMoh__U_o")][Yattee]]
 
@@ -175,7 +175,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       abc8009b-3b69-4740-b36b-a1f1bebb3f5f
 :END:
-: Sonny Sangha
+#+source: Sonny Sangha
 [[yt:svlEVg0To_c][YouTube]] 3:48:00
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=svlEVg0To_c")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=svlEVg0To_c")][Yattee]]
 
@@ -183,7 +183,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       09292f27-ab7c-4a3e-a435-576385783847
 :END:
-: Academind
+#+source: Academind
 [[yt:Dorf8i6lCuk][YouTube]] 3:51:56
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=Dorf8i6lCuk")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=Dorf8i6lCuk")][Yattee]]
 
@@ -191,7 +191,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       fd441b81-f3e9-41b0-a2f4-17980b6f5135
 :END:
-: Clever Programmer
+#+source: Clever Programmer
 [[yt:xP3cxbDUtrc][YouTube]] 7:07:55
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=xP3cxbDUtrc")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=xP3cxbDUtrc")][Yattee]]
 
@@ -199,7 +199,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       f96e80e4-75e7-43a8-8a37-e3ce6d79b7a6
 :END:
-: Academind
+#+source: Academind
 [[yt:MFuwkrseXVE][YouTube]] 3:14:17
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=MFuwkrseXVE")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=MFuwkrseXVE")][Yattee]]
 
@@ -207,7 +207,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       146a5947-8390-4939-8bb8-c23c6c5fad39
 :END:
-: Zaiste Programming
+#+source: Zaiste Programming
 [[yt:iE0prc7GAfI][YouTube]] 58:17
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=iE0prc7GAfI")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=iE0prc7GAfI")][Yattee]]
 
@@ -215,7 +215,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       48c81f67-78a0-467d-b908-e2909b0180d0
 :END:
-: Sonny Sangha
+#+source: Sonny Sangha
 [[yt:bvn_HYpix6s][YouTube]] 3:45:06
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=bvn_HYpix6s")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=bvn_HYpix6s")][Yattee]]
 
@@ -223,7 +223,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       999c8736-86b8-419e-9811-939bfb8bf413
 :END:
-: PedroTech
+#+source: PedroTech
 [[yt:LlvBzyy-558][YouTube]] 1:26:21
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=LlvBzyy-558")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=LlvBzyy-558")][Yattee]]
 
@@ -231,7 +231,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       2c54b51c-2652-4dae-a016-c32eadb2c56e
 :END:
-: codedamn
+#+source: codedamn
 [[yt:fxFqphudZR4][YouTube]] 10:06
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=fxFqphudZR4")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=fxFqphudZR4")][Yattee]]
 
@@ -239,7 +239,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       ff1966e8-1a46-4f27-a9de-31ec70e064a5
 :END:
-: devaslife
+#+source: devaslife
 [[yt:bSMZgXzC9AA][YouTube]] 1:39:25
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=bSMZgXzC9AA")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=bSMZgXzC9AA")][Yattee]]
 
@@ -247,7 +247,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       be0967d4-8d76-4ba1-a415-39bdcbc7dd81
 :END:
-: JavaScript Mastery
+#+source: JavaScript Mastery
 [[yt:LMagNcngvcU][YouTube]] 3:21:37
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=LMagNcngvcU")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=LMagNcngvcU")][Yattee]]
 
@@ -255,7 +255,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       6c9a4015-cb64-4133-84d7-005471b13332
 :END:
-: devaslife
+#+source: devaslife
 [[yt:k2h7usLLBhY][YouTube]] 2:06:09
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=k2h7usLLBhY")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=k2h7usLLBhY")][Yattee]]
 
@@ -263,7 +263,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       d0544479-acdb-4a2e-9576-fedd425fca5c
 :END:
-: PedroTech
+#+source: PedroTech
 [[yt:XMgNgEc94d8][YouTube]] 16:00
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=XMgNgEc94d8")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=XMgNgEc94d8")][Yattee]]
 
@@ -271,7 +271,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       776af9fa-6e7d-4893-b5f8-0693394e18f1
 :END:
-: React Conf 2021
+#+source: React Conf 2021
 [[yt:lGEMwh32soc][YouTube]] 12:01
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=lGEMwh32soc")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=lGEMwh32soc")][Yattee]]
 
@@ -279,7 +279,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       2944fa8f-98ef-4f8d-a417-902282a842cd
 :END:
-: Luca Restagno — Your web development coach ⚛️
+#+source: Luca Restagno — Your web development coach ⚛️
 [[yt:29LwC_6PHac][YouTube]] 7:57:29
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=29LwC_6PHac")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=29LwC_6PHac")][Yattee]]
 
@@ -287,12 +287,12 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       453bd2d4-fef0-4d99-ad0e-801708fa5690
 :END:
-: Sonny Sangha
+#+source: Sonny Sangha
 [[yt:oE8FxN49Wo8][YouTube]] 1:50:38
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=oE8FxN49Wo8")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=oE8FxN49Wo8")][Yattee]]
 
 * React Course - Beginner's Tutorial for React JavaScript Library [2022]
-: freeCodeCamp.org
+#+source: freeCodeCamp.org
 [[yt:bMknfKXIFA8][YouTube]] 11:55:28
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=bMknfKXIFA8")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=bMknfKXIFA8")][Yattee]]
 
@@ -300,7 +300,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       a7a6b1c3-8461-4181-bb76-d48b17ebe5d1
 :END:
-: Sonny Sangha
+#+source: Sonny Sangha
 [[yt:I2dcpatq54o][YouTube]] 3:02:34
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=I2dcpatq54o")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=I2dcpatq54o")][Yattee]]
 
@@ -308,7 +308,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       a50db9b2-7175-4de8-aae1-11b5fa805528
 :END:
-: Alejandeo Dekiev
+#+source: Alejandeo Dekiev
 [[yt:hYLaPpxPDmo][YouTube]] 12:45
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=hYLaPpxPDmo")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=hYLaPpxPDmo")][Yattee]]
 
@@ -316,7 +316,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       6e8b20a3-7c1b-48cb-8120-4611c5b9582c
 :END:
-: JSConf
+#+source: JSConf
 [[yt:mXTRjDAMaVw][YouTube]] 16:51
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=mXTRjDAMaVw")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=mXTRjDAMaVw")][Yattee]]
 
@@ -324,7 +324,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       03cbed83-7233-4dd4-acce-c17974ebfbcd
 :END:
-: Engineering with V
+#+source: Engineering with V
 [[yt:hwccJdyQ3KQ][YouTube]] 13:54
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=hwccJdyQ3KQ")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=hwccJdyQ3KQ")][Yattee]]
 
@@ -332,7 +332,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       4884e38d-7beb-4860-a586-7f84e62f1488
 :END:
-: Clever Programmer
+#+source: Clever Programmer
 [[yt:x3eRXeMB-4k][YouTube]] 2:22:31
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=x3eRXeMB-4k")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=x3eRXeMB-4k")][Yattee]]
 
@@ -340,7 +340,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       b78b1549-3850-4b41-a6f4-3b5106fd9513
 :END:
-: Sonny Sangha
+#+source: Sonny Sangha
 [[yt:NZEUDJvpQMM][YouTube]] 20:33
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=NZEUDJvpQMM")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=NZEUDJvpQMM")][Yattee]]
 
@@ -348,7 +348,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       14b0d4ed-4717-479c-9924-0de9bf57e297
 :END:
-: Jack Herrington
+#+source: Jack Herrington
 [[yt:MpdFj8MEuJA][YouTube]] 37:26
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=MpdFj8MEuJA")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=MpdFj8MEuJA")][Yattee]]
 
@@ -356,7 +356,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       47d5d578-df29-4874-ba1b-44660d6bf98f
 :END:
-: Pusher
+#+source: Pusher
 [[yt:mNq5RUc0sF4][YouTube]] 1:42:24
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=mNq5RUc0sF4")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=mNq5RUc0sF4")][Yattee]]
 
@@ -364,7 +364,7 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       01c46067-1ea5-4f30-ba0d-db5ccaaa2980
 :END:
-: PedroTech
+#+source: PedroTech
 [[yt:WtiF3DP6oWk][YouTube]] 25:16
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=WtiF3DP6oWk")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=WtiF3DP6oWk")][Yattee]]
 
@@ -372,12 +372,12 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 :PROPERTIES:
 :ID:       31aead3b-4adf-47c5-a04a-3d7067e55c6a
 :END:
-: Lama Dev
+#+source: Lama Dev
 [[yt:RZPAQV7JvNU][YouTube]] 14:19
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=RZPAQV7JvNU")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=RZPAQV7JvNU")][Yattee]]
 
 * React Course For Beginners - Learn React in 8 Hours
-: PedroTech
+#+source: PedroTech
 [[yt:f55qeKGgB_M][YouTube]] 7:55:08
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=f55qeKGgB_M")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=f55qeKGgB_M")][Yattee]]
 
