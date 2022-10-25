@@ -7,9 +7,11 @@ youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -rj '"[[https://youtu
 
 # All video entries consist of links and its thumbnail.
 #+name: Videos
-#+begin_src sh :results output raw :noweb yes :wrap
-youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -rj \
-    '"* \(.title)\n\n[[yt:\(.id)]]\n\n  - [[elisp:(evil-collection-xwidget-webkit-new-tab \"yewtu.be/watch?v=\(.id)\")][Invidious]] / [[elisp:(browse-url \"yattee://watch?v=\(.id)\")][Yattee]]\n\n"'
+#+begin_src sh :results output raw :noweb yes
+youtube-dl -j --flat-playlist "${ytc}/${name}/videos" | jq -r \
+    '"* \(.title)\n#+source: \(.url)\n#+begin_center\n[[yt:\(.id)][YouTube]]\n\(.view_count|
+if .>=1000 then "\(./100|floor/10)K" else "\(.)" end) views • [[elisp:(evil-collection-xwidget-webkit-new-tab \"yewtu.be/watch?v=\(.id)\")][Invidious]] / [[elisp:(browse-url \"yattee://watch?v=\(.id)\")][Yattee]]
+,#+end_center\n"'
 #+end_src
 
 # All playlist entries with src_block to execute for its content.
