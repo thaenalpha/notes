@@ -381,4 +381,9 @@ youtube-dl -j --flat-playlist "https://youtube.com/${uri}" | jq -r -f filter.jq
 [[yt:f55qeKGgB_M][YouTube]] 7:55:08
   - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=f55qeKGgB_M")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=f55qeKGgB_M")][Yattee]]
 
+* Facebook Full Stack Clone with REACT! Next.js, Tailwind CSS, Firebase for Beginners
+#+source: Goose Dev
+[[yt:jZqtljoIFss][YouTube]] 6:02:46
+  - [[elisp:(evil-collection-xwidget-webkit-new-tab "yewtu.be/watch?v=jZqtljoIFss")][Invidious]] / [[elisp:(browse-url "yattee://watch?v=jZqtljoIFss")][Yattee]]
+
 #+end_results
