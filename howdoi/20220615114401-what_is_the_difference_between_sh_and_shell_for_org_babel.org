@@ -1,0 +1,71 @@
+:PROPERTIES:
+:ID:       93ecb129-fbc1-4997-992f-b9f361181e04
+:END:
+#+startup: overview
+#+filetags: :org-mode:org-babel:org-table:
+#+title: What is the difference between sh and shell for org-babel?
+https://emacs.stackexchange.com/questions/35321/what-is-the-difference-between-sh-and-shell-for-org-babel
+
+* Question (14) :org:mode:org:babel:org:table:
+
+I'm experimenting with sourcing data from org-mode into my shell scripts and I've run across a weirdness:
+
+#+begin_example org-mode
+#+tblname: simple-table
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+| 5 |
+
+#+name: work-with-simple-list-shell
+#+begin_src shell :var tbl=simple-table
+echo "$tbl"
+#+end_src
+
+#+RESULTS: work-with-simple-list-shell
+: 1
+
+#+name: work-with-simple-list-sh
+#+begin_src sh :var tbl=simple-table
+echo "$tbl"
+#+end_src
+
+#+RESULTS: work-with-simple-list-sh
+| 1 |
+| 2 |
+| 3 |
+| 4 |
+| 5 |
+#+end_example
+
+Any idea what is going on?
+
+* Answer (15) (2017-12-22 / 2017-12-22)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+The difference is /which/ shell gets called to evaluate your block. ~shell~ calls whatever your default shell is while ~sh~ calls ~/bin/sh~ specifically. Your default shell is probably bash, which is an extension of sh. ~echo $0~ will tell you what executable your shell is running:
+
+#+begin_example org-mode
+#+BEGIN_SRC shell
+echo $0
+#+END_SRC
+
+#+RESULTS:
+: /bin/bash
+
+
+#+BEGIN_SRC sh
+echo $0
+#+END_SRC
+
+#+RESULTS:
+: sh
+#+end_example
+
+Any of the shells in ~org-babel-shell-names~ that is installed on your system will work.
+* History
+[[elisp:(howdoyou-promise-answer "What is the difference between sh and shell for org-babel?")][What is the difference between sh and shell for org-babel?]]
+[[elisp:(howdoyou-promise-answer "git clone a directory")][git clone a directory]]

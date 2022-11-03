@@ -1,0 +1,99 @@
+:PROPERTIES:
+:ID:       2acec60d-f2da-4f70-af6e-4e8dc473ece1
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/26613/is-it-possible-to-insert-images-from-the-web-with-its-url][org mode - Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:image-mode:
+#+title: Is it possible to insert images from the web with its url?
+* Question (13)
+
+Is it possible to insert images directly from the web with its url in ~org-mode~?
+i.e. Can I paste something like this into emacs' buffer, so that it changes into
+the image of a cat in the link in ~image mode~?
+
+#+begin_example org
+[[https://d1ra4hr810e003.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/0/D968A2D0-35B8-41C6-A94A0C5C5FCA0725/F0E9E3EC-8F99-4ED8-A40DADEAF7A011A5/dbe669e9-40be-51c9-a9a0-001b0e022be7/thul-IMG_2100.jpg]]
+#+end_example
+
+It just makes it a clickable link in my current settings.
+
+* Answer (12) (2020-03-29 / 2016-08-27)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+It is possible with a little code. I would define a new link like this:
+
+#+BEGIN_SRC emacs-lisp
+(org-add-link-type
+ "image-url"
+ (lambda (path)
+   (let ((img (expand-file-name
+               (concat (md5 path) "." (file-name-extension path))
+               temporary-file-directory)))
+     (if (file-exists-p img)
+         (find-file img)
+       (url-copy-file path img)
+       (find-file img)))))
+#+END_SRC
+
+When you click on it, you should get a cat in image mode. I didn't define export
+functions though. Also, the image is downloaded as a tempfile, which may or may
+not be convenient for you.
+
+Then use it like this:
+~[[image-url:https://d1ra4hr810e003.cloudfront.net/media/27FB7F0C-9885-42A6-9E0C19C35242B5AC/0/D968A2D0-35B8-41C6-A94A0C5C5FCA0725/F0E9E3EC-8F99-4ED8-A40DADEAF7A011A5/dbe669e9-40be-51c9-a9a0-001b0e022be7/thul-IMG_2100.jpg]]~
+
+Then you can use these two functions to overlay or remove an image:
+
+#+begin_src emacs-lisp
+(defun image-url-overlays ()
+  "Put image overlays on remote image urls."
+  (interactive)
+  (loop for image-url
+        in (org-element-map (org-element-parse-buffer) 'link
+             (lambda (link)
+               (when (string= "image-url" (org-element-property
+                                           :type link))
+                 link)))
+        do
+        (let* ((path (org-element-property :path image-url))
+               (ov (make-overlay (org-element-property :begin
+                                                       image-url)
+                                 (org-element-property :end
+                                                       image-url)))
+               (img (create-image (expand-file-name
+                                   (concat (md5 path)
+                                           "."
+                                           (file-name-extension
+                                            path))
+                                   temporary-file-directory))))
+          (overlay-put ov 'display img)
+          (overlay-put ov 'image-url t))))
+
+(defun image-url-clear-overlays ()
+  "Reove overlays on image-urls."
+  (interactive)
+  (require 'ov)
+  (ov-clear 'image-url))
+#+end_src
+
+This downloads the image as a tempfile if it doesn't exist, and then puts an
+overlay on the link.
+
+* Answer (3) (2016-08-26)
+
+Not within the Org buffer itself, as far as I know.
+
+If you export to HTML, however, [[http://orgmode.org/manual/External-links.html][links to images will be converted into images]].
+
+#+begin_quote
+If the description is a file name or URL that points to an image, HTML export
+(see HTML export) will inline the image as a clickable button. If there is no
+description at all and the link points to an image, that image will be inlined
+into the exported HTML file.
+#+end_quote
+
+* History
+[[elisp:(howdoyou-promise-answer "org insert link to image")][org insert link to image]]
+[[elisp:(howdoyou-promise-answer "How do I change which email address GitHub uses for my Gravatar image?")][How do I change which email address GitHub uses for my Gravatar image?]]

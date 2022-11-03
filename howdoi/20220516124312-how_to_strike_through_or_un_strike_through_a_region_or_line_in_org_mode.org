@@ -1,0 +1,87 @@
+:PROPERTIES:
+:ID:       6f51a71b-12a5-4a74-89ac-c1e95fa6c90e
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/36758/how-to-strike-through-or-un-strike-through-a-region-or-line-in-org-mode][Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:
+#+title: How to strike-through or un-strike-through a region or line in org-mode?
+
+* Question (12) :org:mode:
+
+Given a region or line of text in org-mode I would like to call a function that
+either strikes-through the region or removes the strike-through of the region or
+line if strike-through is already present.
+
+[[kbd:][C-c C-x C-f +]] does not seem to do the trick, as for proper strike-through
+display in my org-mode version, each line must be wrapped with "​+" individually.
+
+How can I define a function that works like ~comment-or-uncomment-region~ for
+strike-through in org-mode?
+
+* Answer (4) (2019-12-02)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+For visitors who use Evil: you can use [[https://github.com/emacs-evil/evil-surround][the evil-surround minor mode]] to deal with
+various kinds of markup, including plus signs for strike-through. Evil makes it
+quite convenient to work on the level of the visual-mode selection, lines or
+words. (I'm handling one line at a time, so not sure yet if there's support for
+identical normal-mode operations on multiple lines.)
+
+However, [[https://github.com/emacs-evil/evil-surround/issues/141][to delete the plus-sign markers, you'll need to add them to Evil as
+text objects]].
+
+* Answer (3) (2018-11-12 / 2018-11-09)
+
+If you're still looking for the solution,
+
+I've made a partial solution for this
+
+check this out (copied from [[https://emacs.stackexchange.com/a/45848/18252][https://emacs.stackexchange.com/a/45848/18252]]):
+
+#+begin_src emacs-lisp
+(defun strike-through-for-org-mode ()
+  (interactive)
+  (beginning-of-line)
+  (save-excursion
+    (if (string-prefix-p "*" (thing-at-point 'line t))
+        (progn
+          (setq go_char (string-match "[ ]" (thing-at-point 'line
+                                                            t)))
+          (forward-char (+ go_char 1))
+          (insert "+")
+          (end-of-line)
+          (insert "+"))
+      (if (string-match "[^ ]" (thing-at-point 'line t))
+          (progn
+            (setq go_char (string-match "[^ ]" (thing-at-point
+                                                'line t)))
+            (forward-char (+ go_char 2))
+            (insert "+")
+            (end-of-line)
+            (insert "+"))
+        (message "[-] Not Proper Position!")))))
+#+end_src
+
+#+begin_src emacs-lisp
+(defun strike-through-for-org-mode-undo ()
+  (interactive)
+  (beginning-of-line)
+  (save-excursion
+    (if (string-match "[+]" (thing-at-point 'line t))
+        (progn
+          (setq go_char (string-match "[+]" (thing-at-point 'line
+                                                            t)))
+          (forward-char go_char)
+          (delete-char 1)
+          (end-of-line)
+          (delete-char -1))
+      (message "[-] Not Proper Position!"))))
+#+end_src
+
+* History
+
+- [[elisp:(howdoyou-promise-answer "strikethrough in org")][strikethrough in org]]
+
+- [[elisp:(howdoyou-promise-answer "brew downgrade from head")][brew downgrade from head]]

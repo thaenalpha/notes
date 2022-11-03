@@ -1,0 +1,55 @@
+:PROPERTIES:
+:ID:       a78257bb-e870-4b34-8752-a304eeb9bdbe
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/68687/how-can-i-color-horizontal-lines-in-org-mode][Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:
+#+title: How can I color horizontal lines in org mode?
+* Question (0)
+
+Both markdown mode and Org mode allow you to insert a number of dashes on an
+otherwise empty line (at least three in markdown mode, at least five in Org
+mode), that are rendered as horizontal rules in the exported output.
+
+In markdown mode, the dashes become green in the markdown buffer.
+
+Would it be possible to obtain the same behavior in an ~org-mode~ buffer, where
+the dashes become colorful?
+
+[[https://orgmode.org/manual/Horizontal-Rules.html][https://orgmode.org/manual/Horizontal-Rules.html]]
+
+#+begin_quote
+12.9 Horizontal Rules: A line consisting of only dashes, and at least 5 of them,
+is exported as a horizontal line.
+#+end_quote
+
+* Answer (0) (2021-09-29 / 2021-09-29)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+Please see the Professor John Kitchin`s original solution from:
+[[https://list.orgmode.org/87h7e5dtbb.fsf@ucl.ac.uk/T/#t][https://list.orgmode.org/87h7e5dtbb.fsf@ucl.ac.uk/T/#t]]
+
+#+begin_quote
+you can add a rule like this in an org-mode hook:
+#+end_quote
+
+#+begin_src emacs-lisp :tangle yes
+(add-hook 'org-mode-hook
+          (lambda ()
+            (font-lock-add-keywords
+             nil
+             '(("^-\\{5,\\}"  0 '(:foreground "green" :weight bold))))))
+#+end_src
+
+#+begin_quote
+that will make a line starting with at least 5 - be green and bold in color.
+#+end_quote
+* History
+[[elisp:(howdoyou-promise-answer "hr line in org")][hr line in org]]
+[[elisp:(howdoyou-promise-answer "edit status tweet")][edit status tweet]]
+[[elisp:(howdoyou-promise-answer "pass password-store get only password on first line")][pass password-store get only password on first line]]
+[[elisp:(howdoyou-promise-answer "emacs let vs if-let")][emacs let vs if-let]]
+[[elisp:(howdoyou-promise-answer "emacs let or if-let")][emacs let or if-let]]
+[[elisp:(howdoyou-promise-answer "let or if-let")][let or if-let]]

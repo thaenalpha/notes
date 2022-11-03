@@ -1,0 +1,92 @@
+:PROPERTIES:
+:ID:       31f3850c-6675-4c54-83df-bd1fcbd17236
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/26203/convert-between-numbered-and-unordered-lists-in-org-mode][Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:
+#+title: Convert between numbered and unordered lists in org-mode
+* Question (18)
+
+Is there a function to convert between numbered and unordered lists in org-mode?
+The lists may or may not be nested.
+
+* Answer (28) (2016-08-11)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+You can use the function ~org-ctrl-c-minus~, bound by default to (you guessed it)
+[[kbd:][C-c -]], to cycle through the bullet types. The [[help:org-ctrl-c-minus][doctstring]] reads:
+
+#+begin_quote helpful-mode
+Insert separator line in table or modify bullet status of line.
+
+Also turns a plain line or a region of lines into list items.
+Calls ~org-table-insert-hline~, ~org-toggle-item~, or
+~org-cycle-list-bullet~, depending on context.
+#+end_quote
+
+~org-cycle-list-bullet~, in turn, does the following according to the [[help:org-cycle-list-bullet][docstring]]:
+
+    ~-~   ->  ~+~   ->  ~*~   ->  ~1.~  ->  ~1)~
+
+See the [[elisp:(org-info-find-node "(org) Plain Lists")][org manual node on plain lists]] for more details.
+
+* Answer (20) (2016-08-11 / 2016-08-11)
+
+In my org-mode environment, for example, the first state is as followings:
+unordered list.
+
+#+begin_example org-mode
+- a
+- b
+- c
+#+end_example
+
+Modify the first line as "1. a" as numbered list.
+
+#+begin_example org-mode
+1. a
+- b
+- c
+#+end_example
+
+Now, hit [[kbd:][C-c C-c]] at the first line "1. a". Unordered list becomes numbered list.
+
+#+begin_example org-mode
+1. a
+2. b
+3. c
+#+end_example
+
+Modify the first line as "- a" as unordered list.
+
+#+begin_example org-mode
+- a
+2. b
+3. c
+#+end_example
+
+Now Hit [[kbd:][C-c C-c]] at the first line "- a". Numbered list becomes unordered list.
+
+#+begin_example org-mode
+- a
+- b
+- c
+#+end_example
+
+I hope it works.
+
+* Answer (2) (2021-04-08)
+
+You can use shift→
+
+(that is [[kbd:][S-<right>]] in Emacs notation.) This is bound to ~org-shiftright~, which
+will automatically do the right thing for your entire list if you're on any of
+the items. Press it multiple times to cycle through all possible list styles.
+And [[kbd:][S-<left>]] goes the other way :)
+
+(Source: [[https://www.reddit.com/r/emacs/comments/5dbn1g/easier_way_to_convert_text_to_ordered_list_in_org/da3a5np/?utm_source=reddit&utm_medium=web2x&context=3][reddit]])
+
+* History
+[[elisp:(howdoyou-promise-answer "add extra bullets in org-mode")][add extra bullets in org-mode]]

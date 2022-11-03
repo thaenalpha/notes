@@ -1,0 +1,80 @@
+:PROPERTIES:
+:ID:       13a719f9-756d-4ddc-af7e-ca2d50e71063
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/64607/org-display-remote-inline-images-not-working][org mode - Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:images:
+#+title: org-display-remote-inline-images not working
+
+* Question (3)
+
+I recently saw that a variable ~org-display-remote-inline-images~ was added to Org
+mode. This is a huge one for technical documentation, but sadly I was not able
+to get it to work. I tried ~cache~ and then ~download~ value.
+
+Workflow:
+
+1. Add ~[[https://URL-to-some-image.png]]~ to the document. (I tried also jpg and
+   svg.)
+
+2. ~M-x org-toggle-inline-images~
+
+Am I missing something? I saw something with ~imagemagick~ in the diff-patch,
+~imagemagick~ is installed on the system.
+
+* Answer (1) (2022-09-04 / 2022-09-04)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+I agree with [[https://emacs.stackexchange.com/questions/64607/org-display-remote-inline-images-not-working/73431#comment103023_64607][NickD in the comments above]] that out of the box this currently only
+works for Tramp remote links. Tested with recent build of Emacs 29 development.
+
+Then I read somewhere that this does work in Doom Emacs so I went digging
+through its source.
+
+Below is what I had to do to get my vanilla Emacs to show inline images from
+http / https URLs:
+
+#+begin_example emacs-lisp
+;; https://blog.tecosaur.com/tmio/2021-04-26-Welcome.html#inline-display-remote
+;; on 2022-09-04 this only works for tramp remote links and not for http/https
+(setq org-display-remote-inline-images 'cache)
+
+;; we look to doom emacs for an example how to get remote images also working
+;; for normal http / https links
+;; 1. image data handler
+(defun org-http-image-data-fn (protocol link _description)
+  "Interpret LINK as an URL to an image file."
+  (when (and (image-type-from-file-name link)
+             (not (eq org-display-remote-inline-images 'skip)))
+    (if-let (buf (url-retrieve-synchronously (concat protocol ":" link)))
+        (with-current-buffer buf
+          (goto-char (point-min))
+          (re-search-forward "\r?\n\r?\n" nil t)
+          (buffer-substring-no-properties (point) (point-max)))
+      (message "Download of image \"%s\" failed" link)
+      nil)))
+
+;; 2. add this as link parameter for http and https
+(org-link-set-parameters "http"  :image-data-fun #'org-http-image-data-fn)
+(org-link-set-parameters "https" :image-data-fun #'org-http-image-data-fn)
+
+;; 3. pull in org-yt which will advise ~org-display-inline-images~ how to do the extra handling
+(use-package org-yt
+  :quelpa (org-yt :fetcher github :repo "TobiasZawada/org-yt"))
+(require 'org-yt)
+#+end_example
+
+See also:
+
+- [[https://github.com/doomemacs/doomemacs/blob/4c9df9bfc63d2c3a9e20e20deaa854072e379f47/modules/lang/org/config.el#L581][doomemacs/config.el
+  at 4c9df9bfc63d2c3a9e20e20deaa854072e379f47 · doomemacs/d...]]
+
+- with the ~org-http-image-data-fn~ being defined here:
+  [[https://github.com/doomemacs/doomemacs/blob/0f43c3eed5532e63c3b475f5385ded40278b12fe/modules/lang/org/autoload/org-link.el#L75][doomemacs/org-link.el
+  at 0f43c3eed5532e63c3b475f5385ded40278b12fe · doomemacs...]]
+
+* History
+
+[[elisp:(howdoyou-promise-answer "org-display-remote-inline-images for data:image")][org-display-remote-inline-images for data:image]]

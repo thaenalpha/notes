@@ -1,0 +1,49 @@
+:PROPERTIES:
+:ID:       52fb5f58-10c9-4422-9964-c9b202175077
+:ROAM_REFS: "[[https://stackoverflow.com/questions/68085596/how-to-change-the-language-of-a-result-of-results-output-code-in-emacs-org-mo][Stack Overflow]]"
+:END:
+#+startup: overview
+#+filetags: :emacs:org-mode:org-babel:
+#+title: How to change the language of a result of ":results output code" in emacs org-mode
+* Question (5)
+
+I have a org file which contains a block like this:
+
+#+begin_example emacs
+#+BEGIN_SRC sh :exports results :results output code
+sed -n '9,36 p' ./code/convert.c
+#+END_SRC
+#+end_example
+
+~C-c C-c~ on the ~BEGIN_SRC~ will give me the following result:
+
+#+begin_example emacs
+#+RESULTS:
+#+begin_src sh
+ // here is some C code
+#+end_src
+#+end_example
+
+How to change the language of a result of ":results output code" so that I can get an output like this:
+
+#+begin_example emacs
+#+RESULTS:
+#+begin_src C
+ // here is some C code
+#+end_src
+#+end_example
+* Answer (6) (2021-06-22)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+#+begin_example emacs
+#+BEGIN_SRC sh :exports results :results output code :wrap SRC C
+sed -n '9,36 p' ./code/convert.c
+#+END_SRC
+#+end_example
+
+the ~SRC~ of ~#+BEGIN_SRC~ and ~#+END_SRC~ be replaced by ~:wrap XXX~ will ~#+BEGIN_XXX~ and ~#+END_XXX~
+
+* History
+[[elisp:(howdoyou-promise-answer "emacs org mode get results output")][emacs org mode get results output]]
+[[elisp:(howdoyou-promise-answer "org take results of evaluated code block ")][org take results of evaluated code block ]]

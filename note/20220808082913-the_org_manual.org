@@ -1,0 +1,191 @@
+:PROPERTIES:
+:ID:       b2ac1058-0b11-4b50-9205-d2041c4b0847
+:END:
+#+title: The Org Manual
+[[elisp:(org-info)][Read documentation for Org in the info system.]]
+* Menu: :TOC:
+- [[#introduction][Introduction]]
+- [[#document-structure][Document Structure]]
+- [[#tables][Tables]]
+- [[#hyperlinks][Hyperlinks]]
+- [[#items][Items]]
+- [[#tags][Tags]]
+- [[#properties-and-columns][Properties and Columns]]
+- [[#dates-and-times][Dates and Times]]
+- [[#refilling-and-archiving][Refilling and Archiving]]
+- [[#capture-and-attachments][Capture and Attachments]]
+- [[#agenda-views][Agenda Views]]
+- [[#markup-for-rich-contents][Markup for Rich Contents]]
+- [[#exporting][Exporting]]
+- [[#publishing][Publishing]]
+- [[#citation-handling][Citation handling]]
+- [[#working-with-source-code][Working with Source Code]]
+  - [[#using-header-arguments][Using Header Arguments]]
+  - [[#environment-of-a-code-block][Environment of a Code Block]]
+  - [[#evaluating-code-blocks][Evaluating Code Blocks]]
+  - [[#results-of-evaluation][Results of Evaluation]]
+- [[#miscellaneous][Miscellaneous]]
+- [[#hacking][Hacking]]
+- [[#history-and-acknowledgments][History and Acknowledgments]]
+- [[#gnu-free-documentation-license][GNU Free Documentation License]]
+- [[#main-index][Main Index]]
+- [[#key-index][Key Index]]
+- [[#command-and-function-index][Command and Function Index]]
+- [[#variable-index][Variable Index]]
+
+* Introduction
+* Document Structure
+* Tables
+* Hyperlinks
+* TODO Items
+* Tags
+* Properties and Columns
+Storing information about an entry.
+* Dates and Times
+Making items useful for planning.
+* Refilling and Archiving
+Moving and copying information with ease.
+* Capture and Attachments
+Dealing with ext. data.
+* Agenda Views
+Collecting information into views.
+* Markup for Rich Contents
+* Exporting
+* Publishing
+* Citation handling
+Create, follow and export citations.
+* [[elisp:(org-info-find-node "(org) Working with Source Code")][Working with Source Code]]
+** [[elisp:(org-info-find-node "(org) Using Header Arguments")][Using Header Arguments]]
+** [[elisp:(org-info-find-node "(org) Environment of a Code Block")][Environment of a Code Block]]
+** [[elisp:(org-info-find-node "(org) Evaluating Code Blocks")][Evaluating Code Blocks]]
+** [[elisp:(org-info-find-node "(org) Results of Evaluation")][Results of Evaluation]]
+:PROPERTIES:
+:ID:       1d7d4f94-75b6-470d-9d75-a316cb9f4bab
+:END:
+How org handles the results of a code block execution depends on many
+header arguments working together. The primary determinant, however, is
+the ~:results~ header argument. It accepts four classes of options. Each code
+block can take only one option per class:
+
++ *Collection*
+  - ~value~
+    Default for most Babel libraries. Functional mode. Org gets the value by
+    wrapping the code in a function definition in the language of the source
+    block. That is why when using ~:results value~, code should execute like
+    a function and return a value. For languages like [[id:2f7cb461-d726-422d-a434-029dfed2d2a4][Python]], an explicit
+    ~return~ statement is mandatory when using ~:results value~. Result is the
+    value of the last expression in the code block.
+
+    When using a session, Org passes the code to and gets the value from an
+    interpreter running as an interactive Emacs inferior process's last
+    statement output. Org has to use language-specific methods to get the
+    value.
+  - ~output~
+    Scripting mode. Org passes the code to an external process running the
+    interpreter. The process's standard output is captured and returned.
+
+    When using a session, Org passes the code to and concatenates any text
+    output from the interpreter running as an interactive Emacs inferior
+    process and returns the collection as a result.
+
++ *Type*
+  - ~table~ ~vector~
+    Interpret the results as an Org table. If the result is a single value, create
+    a table with one row and one column. Usage example:
+    ~:results value table~.
+  - ~list~
+   Interpret the results as an Org list. If the result is a single value, create a
+   single-element list.
+  - ~scalar~ ~verbatim~
+    Usage examples: ~:results value verbatim~.
+  - ~file~
+    The code block is executed and the result is saved to a file. The file is
+    created in the same directory as the source file. The file name is
+    determined by the ~:file-name~ header argument. If the file already exists,
+    it is overwritten.
+
++ *Format*
+  - ~org~
+   Results enclosed in a ~BEGIN_SRC org~ block.  For comma-escape, either
+   ~<TAB>~ in the code, or export the file. Usage example: ~:results value org~.
+  - ~raw~
+    The results are returned as a string.
+  - ~link~ ~graphics~
+    The result is a link to the file specified in ~:file~ header argument.
+    However, unlike plain ~file~ type, nothing is saved to the file. The block is
+    used for its side-effects only, as in the following example:
+
+    #+begin_src shell :results file link :file "emacs-25.3.tar.gz"
+curl http://www.gnu.org/software/emacs/download/emacs-25.3.tar.gz
+    #+end_src
+  - ~html~
+    Results enclosed in a ~BEGIN_EXPORT html~ block. Usage example:
+    ~:results value html~.
+  - ~latex~
+    Results enclosed in a ~begin_export latex~ block. Usage example:
+    ~:results value latex~.
+  - ~code~
+    Results enclosed in a code block. Usage example: ~:results value code~.
+
++ *Handling*
+  Handling options after collecting the results.
+  - ~replace~
+    =Default=. Insert the results at the point of the code block. Remove previous
+    results. Usage example: ~:results output replace~.
+  - ~silent~
+    Do not insert the results, but echo them in the minibuffer. Usage example:
+    ~:results output silent~.
+  - ~none~
+    Do not process results at all. No insert the results nor echo them in the
+    minibuffer. Usage example: ~:results none~.
+  - ~append~
+    Append results at the point of the code block. Latest results are at the
+    bottom. Does not remove previous results. Usage example:
+    ~:results output append~.
+  - ~prepend~
+    Prepend results at the point of the code block. Latest results are at the
+    top. Does not remove previous results. Usage example:
+    ~:results output prepend~.
+
++ *Post-processing*
+  The ~:post~ header argument is for post-processing the results. When ~post~
+  has any value, Org binds the results to ~*this*~ variable for easy passing to
+  ~var~ header argument specifications. That makes results available to other
+  code blocks.
+
+  The following example shows use of ~colnames~ header argument in ~post~ to
+  pass data between code blocks.
+
+  #+name: round-tbl
+  #+begin_src emacs-lisp :tangle yes :var tbl="" fmt="%.3f"
+(mapcar (lambda (row)
+          (mapcar (lambda (cell)
+                    (if (numberp cell)
+                        (format fmt cell)
+                      cell))
+                  row))
+        tbl)
+  #+end_src
+  #+begin_src python :colnames yes :post round-tbl[:colnames yes](tbl=*this*)
+return [["foo", "bar", "baz"], [123, 456, 789]]
+#+end_src
+
+  The following code block is coming from Copilot.
+  #+begin_src python :tangle yes :post round-tbl[:colnames yes](tbl=*this*)
+import numpy as np;
+import pandas as pd;
+df = pd.DataFrame([[1, 2, 3], [4, 5, 6]], columns=['a', 'b', 'c'])
+df.to_csv('/tmp/test.csv', index=False)
+#+end_src
+
+ #+begin_src emacs-lisp :colnames yes :post round-tbl[:colnames yes](tbl=*this*)
+`(("foo" "bar" "baz") (123, 456, 789))
+#+end_src
+* Miscellaneous
+* Hacking
+* History and Acknowledgments
+* GNU Free Documentation License
+* Main Index
+* Key Index
+* Command and Function Index
+* Variable Index

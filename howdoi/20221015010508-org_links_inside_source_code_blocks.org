@@ -1,0 +1,90 @@
+:PROPERTIES:
+:ID:       5ecd7c7a-de6a-4684-8b4e-c03e5f3d420d
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/50239/org-links-inside-source-code-blocks][org mode - org links inside source blocks - Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:org-export:latex:
+#+title: org links inside source code blocks
+* Question (0)
+
+In my org file I have something like:
+
+#+begin_example org
+#+NAME: fig:figure
+\begin{figure}
+   \includegraphics{figure}
+\end{figure}
+#+end_example
+
+and then I want to reference that figure inside a code block:
+
+#+begin_example org
+#+BEGIN_SRC r
+    # code ...
+    x <- 3
+    # more code for fig. [[fig:figure]]
+    plot(1:x)
+#+END_SRC
+#+end_example
+
+[[fig:figure]] is not a link in the org document and does not get resolved when
+exported, it simply stays verbatim in the text. Is it somehow possible to make
+it reference the figure?
+
+* Answer (1) (2019-04-30)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+I think you can do it like this. They key is the mathescape option for minted,
+and using minted for src block fontification.
+
+#+begin_example org
+#+BEGIN_SRC emacs-lisp
+(setq org-latex-minted-options
+     '(("frame" "lines") ("linenos=true") ("mathescape")))
+#+END_SRC
+
+#+caption: figure for testing \label{fig-1}
+[[./test.png]]
+
+#+BEGIN_SRC ipython
+5
+# see figure $\ref{fig-1}$
+4
+#+END_SRC
+
+#+RESULTS:
+:results:
+# Out [1]:
+# text/plain
+: 4
+:end:
+#+end_example
+
+#+answered: Apr 30, 2019 at 14:21 John Kitchin
+ #+begin_comment
+ Is it right that this will only work for LaTeX export, i.e., no
+ link-fontification in the org-buffer and the method does not work for other
+ export targets? –  Tobias Apr 30, 2019 at 14:37
+
+ that works, pretty cool! Is it possible to set the use of minted file local? – 
+ gdkrmr Apr 30, 2019 at 16:10
+
+ I think you can use org-latex-listings to locally control which package is
+ used. You want to set it to 'minted –  John Kitchin Apr 30, 2019 at 18:38
+
+ Also this will only affect LaTeX exports. It won't fix anything in the
+ org-buffer, or work for other export backends. –  John Kitchin Apr 30, 2019 at
+ 18:38
+
+ an even better way is the option texcl, it only works in comments but does not
+ switch to the math font! –  gdkrmr May 2, 2019 at 15:11
+#+end_comment
+
+* History
+[[elisp:(howdoyou-promise-answer "org links inside source code blocks")][org links inside source code blocks]]
+[[elisp:(howdoyou-promise-answer "Copy and Paste From PDF to Emacs as Plain Text")][Copy and Paste From PDF to Emacs as Plain Text]]
+[[elisp:(howdoyou-promise-answer "import pdf to emacs org")][import pdf to emacs org]]
+[[elisp:(howdoyou-promise-answer "elisp random a character on keyboard")][elisp random a character on keyboard]]
+[[elisp:(howdoyou-promise-answer "bookmarklet for macos xwidget-webkit")][bookmarklet for macos xwidget-webkit]]

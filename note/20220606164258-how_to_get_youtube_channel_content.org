@@ -1,0 +1,27 @@
+:PROPERTIES:
+:ID:       af65eb53-d2a6-4dfe-a40c-ae079acd645e
+:END:
+#+startup: overview
+#+filetags: :org-mode:Technical:
+#+title: How to get youtube channel content
+[[yt:9QtKXdN1ej8][Emacs Get Youtube Video Contents In ORG File 2022_05_26_03:13:56 - YouTube]]
+* Solution :Technical:org:mode:
+use ~youtube-dl~ to dump JSON output of playlist and pipe into ~jq~ to extract title
+and url to save as org link.
+#+name: youtube-block
+#+begin_src shell
+youtube-dl -j --flat-playlist "${url}" | jq -rj\
+    '"[[https://youtu.be/\(.id)][\(.title)]]\n"'
+#+end_src
+
+#+name: Linux Plumbers Video Contents
+#+header: :var url="https://www.youtube.com/c/LinuxPlumbersconference/videos"
+
+#+name: Max Pronko Video Contents
+#+header: :var url="https://www.youtube.com/c/MaxPronko/videos"
+
+#+name: Wil T NixOS Video Contents
+#+header: :var url="https://youtube.com/playlist?list=PL-saUBvIJzOkjAw_vOac75v-x6EzNzZq-"
+#+begin_src sh :results output list :noweb yes :wrap
+<<youtube-block>>
+#+end_src

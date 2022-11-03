@@ -1,0 +1,5 @@
+:PROPERTIES:
+:ID:       f35782fd-409b-402d-82fe-eb8ad245f015
+:END:
+#+title: Python Tutorial - Python for Beginners {Full Course} - YouTube
+[[yt:_uQrJ0TkZlc]]

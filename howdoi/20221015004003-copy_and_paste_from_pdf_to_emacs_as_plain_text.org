@@ -1,0 +1,84 @@
+:PROPERTIES:
+:ID:       7ab8ad24-7c50-4674-9a43-6e38600ad575
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/21656/copy-and-paste-from-pdf-to-emacs-as-plain-text][org mode - Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:copy-paste:pdf:yank:
+#+title: Copy and Paste From PDF to Emacs as Plain Text
+* Question (3)
+
+Here is my problem:
+
+I often copy text from a PDF (let's say one that is nicely formatted or scanned
+cleanly) and like to post it in an active org-mode file I have for academic
+research. However, pasting it with ~C-y~ typically inherits a lot of the new lines
+that PDF text tends to carry, requiring me to fix the text manually.
+
+I've checked around for a solution to this problem, but the closest I found was
+a [[https://stackoverflow.com/a/5194494][previous question]] on overflow, but it only works partially. It requires that I
+select the newly pasted text with ~C-x C-x~, call ~replace-string~ with ~C-q C-j RET
+RET~.
+
+This typically removes most of the new lines effectively, but will often
+eliminate the space between two words that were on the end of the previous line
+and the first on the next (example would be 'betweentwo' in this sentence).
+
+Any common fix to this? If possible, I would like a general solution that allows
+me to paste text from any source as simply plain text. I'm using Linux and emacs
+24.5 for clarification. I don't think any of my own configurations are in
+conflict, but if my init file is wanted, I can post that on request.
+
+EDIT: Pictures to show the problem.
+
+Here's sample text of a pdf I want to copy. It's either a direct PDF export or a
+very clean scan, so I have no problem copying text accurately to my clipboard
+(No incorrect words, symbols, etc).
+
+Sample Text
+
+Here's what it looks like pasted ~C-y~ in emacs (org-mode on). Notice how it
+doesn't just let the lines wrap naturally. This is actually a cleaner yank than
+most, but the problem is still present.
+
+enter image description here
+
+Here's what it looks like after I use the make-shift method I linked in the
+original post. As of now, I'm re-highlight the region with ~C-x C-x~ and then use
+~ispell-region~ to methodically correct the words combined together.
+
+enter image description here
+
+*Solution*: YoungFrog's answer below clarified my problem. TL;DR, ~M-q~,
+fill-column, does well to reformat the text I yank from PDFs into paragraphs of
+length determined by emacs' ~fill-column~ (70 by default).
+
+In addition, I was using ~visual-line-mode~, which can make ~fill-column~ look like
+it's not working right since the minor-mode is intended to visually wrap text
+with "soft new lines", as YoungFrog also pointed out.
+
+A useful package that combines ~visual-line-mode~ with the formatting benefits of
+~fill-column~ is ~visual-fill-column~, [[http://melpa.org/#/visual-fill-column][available on MELPA]].
+
+* Answer (2) (2016-04-17)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+You're looking for ~M-q~ (which runs the command ~fill-paragraph~) : it will refill
+the paragraph according to the current value of ~fill-column~ by removing/adding
+hard newlines at the right spots for you. You can use ~C-x f~ to change the value
+of ~fill-column~.
+
+If you prefer to avoid hard newlines at all (e.g. because you rely on
+~visual-line-mode~ and ~word-wrap~), you can set ~fill-column~ to a ridiculously large
+value (like 99999), or let ~unfill-paragraph~ or ~unfill-region~ do that for you.
+Those functions are available on emacswiki as you already noticed in a comment :
+
+- [[https://www.emacswiki.org/emacs/UnfillParagraph][https://www.emacswiki.org/emacs/UnfillParagraph]]
+- [[https://www.emacswiki.org/emacs/UnfillRegion][https://www.emacswiki.org/emacs/UnfillRegion]]
+
+* History
+[[elisp:(howdoyou-promise-answer "Copy and Paste From PDF to Emacs as Plain Text")][Copy and Paste From PDF to Emacs as Plain Text]]
+[[elisp:(howdoyou-promise-answer "import pdf to emacs org")][import pdf to emacs org]]
+[[elisp:(howdoyou-promise-answer "elisp random a character on keyboard")][elisp random a character on keyboard]]
+[[elisp:(howdoyou-promise-answer "bookmarklet for macos xwidget-webkit")][bookmarklet for macos xwidget-webkit]]

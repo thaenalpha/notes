@@ -1,0 +1,37 @@
+:PROPERTIES:
+:ID:       2f7cb461-d726-422d-a434-029dfed2d2a4
+:END:
+#+title: Python
+* Data Structure and Algorithms
+Demonstration of Python data structures and algorithms in [[id:3158add7-e18e-4165-8012-9cabe1f132d1][Emacs Org-mode]].
+#+NAME: less-cols
+| a |
+|---|
+| b |
+| c |
+
+          #+BEGIN_SRC python :var tab=less-cols :colnames yes
+return [[val + '*' for val in row] for row in tab]
+          #+END_SRC
+
+#+RESULTS:
+| a  |
+|----|
+| b* |
+| c* |
+
+#+NAME: with-rownames
+| one | 1 | 2 | 3 | 4 |  5 |
+| two | 6 | 7 | 8 | 9 | 10 |
+
+          #+BEGIN_SRC python :var tab=with-rownames :rownames yes
+return [[val + 10 for val in row] for row in tab]
+          #+END_SRC
+
+          #+RESULTS:
+          | one | 11 | 12 | 13 | 14 | 15 |
+          | two | 16 | 17 | 18 | 19 | 20 |
+
+* Tutorial
+- [[id:f35782fd-409b-402d-82fe-eb8ad245f015][Python Tutorial - Python for Beginners {Full Course} - YouTube]]
+  [[yt:_uQrJ0TkZlc]]

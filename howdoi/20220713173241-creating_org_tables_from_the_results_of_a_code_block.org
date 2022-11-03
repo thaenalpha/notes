@@ -1,0 +1,110 @@
+:PROPERTIES:
+:ID:       cde90655-786f-4c64-a42e-46638a3d71c7
+:ROAM_REFS: "[[https://stackoverflow.com/questions/55598919/creating-org-tables-from-the-results-of-a-code-block][emacs - Stack Overflow]]"
+:END:
+#+startup: overview
+#+filetags: :emacs:org-mode:org-babel:
+#+title: Creating org-tables from the results of a code block
+* Question (3) :emacs:org:mode:org:babel:
+
+I am trying to create an org-table based on the content of a CSV file that uses
+";" as a delimiter.
+
+I thought it would be easy to have a source code block to "cat" the content of
+the file and then pass the result to a function that creates the table, but I
+got stuck: I can't find a way to use the "results" of the first source code
+block. The function I know (org-table-convert-region) expects a region to work
+on and I don't know how to pass the "cat"-ed text as a region.
+
+#+begin_example org
+#+NAME: csvraw
+#+BEGIN_SRC sh :results raw
+cat afile.csv
+#+END_SRC
+#+end_example
+
+I'd appreciate your help to generate a code block that produces an org-table out
+of my csv file, which contains lines like the following:
+
+#+begin_example csv
+ID;Region;SubRegion;Area;No
+1234;Asia;India;45;2
+24251;Europe;Romania;456;67
+#+end_example
+
+* Answer (7) (2019-04-10 / 2019-04-10)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+There is ~org-table-convert-region~ (bound to ~C-c |~) which can do the
+transformation fairly simply. The only trick is to specify ~;~ as the separator.
+You can do that by invoking it with the proper prefix argument - the doc string
+says: [[help:org-table-convert-region][org-table-convert-region]]
+
+The ~(64)~ value is just three [[kbd:][C-u]] in a row, so the process is as follows:
+
+- insert the CSV file with [[kbd:][C-x i]].
+- [[kbd:][C-x C-x]] to mark the inserted contents as the active region.
+- [[kbd:][C-u C-u C-u C-c | ; RET]]
+
+What's even cooler, leaving an empty line in the CSV file between the first line
+and the rest of the lines, will make the first line a header in the table
+automatically.
+
+And you can wrap it up in a code block as well:
+
+#+begin_src elisp :var file="/tmp/foo.csv" :results raw
+(defun csv-to-table (file)
+  (with-temp-buffer
+    (erase-buffer)
+    (insert-file file)
+    (org-table-convert-region (point-min) (point-max) ";")
+    (buffer-string)))
+
+(csv-to-table file)
+#+end_src
+
+#+begin_example emacs
+#+RESULTS:
+| a | b | c |
+|---+---+---|
+| d | e | f |
+| g | h | i |
+#+end_example
+
+* Answer (2) (2019-04-10 / 2019-04-10)
+#+begin_src emacs-lisp
+(defun jea-convert-csv-to-org-table (fname)
+  (interactive "fCSV to convert: ")
+  (let ((result '("|-\n")))
+    (with-temp-buffer
+      (save-excursion (insert-file-contents-literally fname))
+      (while (and (not (eobp)) (re-search-forward "^\\(.+\\)$"
+                                                  nil t nil))
+        (push (concat "|" (replace-regexp-in-string
+                           ";" "|" (match-string 1))
+                      "|\n")
+              result))
+      (push '"|-\n" result))
+    (concat (seq-mapcat #'identity (reverse result)))))
+#+end_src
+
+install the elisp code in your ~/.emacs file and restart emacs. Or, better yet,
+~eval~ it into existence (CTRL+x, CTRL+e or ALT+x eval-last-sexp).
+
+#+begin_example org
+#+name: csvraw
+#+begin_src emacs-lisp :results raw
+(jea-convert-csv-to-org-table "/Users/jamesanderson/Downloads/test1.csv")
+#+end_src
+#+end_example
+
+note the change to ~elisp~ from ~sh~ in the above. here is a gif of it in action:
+[[https://imgur.com/a/SHeNTc7][emacs converting csv to org table]]
+
+The code is not optimized for large files, and, to be frank, quite quickly
+thrown together. But, after a tiny bit of testing, seems to work.
+
+* History
+[[elisp:(howdoyou-promise-answer "emacs org get inserted results data from evaluated block ")][emacs org get inserted results data from evaluated block ]]

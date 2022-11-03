@@ -1,0 +1,150 @@
+:PROPERTIES:
+:ID:       d39b8011-156c-4627-a03e-f72b9b40cc3f
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/390/display-pdf-images-in-org-mode][Display PDF images in org-mode - Emacs Stack Exchange]]"
+:END:
+#+startup: overview
+#+filetags: :org-mode:pdf:images:
+#+title: Display PDF images in org-mode
+* Question (28)
+
+/Note: This question was asked here before, with no success./
+
+Org-mode’s ability to display inline images is fantastic for writing my weekly
+scientific reports. I can include graphs, link them with their data, link with
+the conclusions, and really harness the power of org-mode.
+
+The only problem I have is that org needs the images to use conventional image
+formats (jpeg, png, etc), while I prefer for my graphs to be in PDF.
+
+*How can I display inline pdf images in org-mode?*
+
+My final objective is to just write a link like this in org-mode:
+
+#+begin_example org
+[[file:~/Work/grap.pdf]]
+#+end_example
+
+And have it displayed inline just like it would happen if it were a png.
+
+/I know I could just have a copy of each graph in jpeg or something (which is
+what I do right now), but it’s slightly cumbersome and it always carries the
+risk of the pdf graph being updated and me forgetting to update the jpeg./
+
+* Answer (17) (2017-04-05 / 2014-09-28)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+
+*NOTE*: You need to have ImageMagick installed on your system (~convert~ executable)
+for this solution to work.
+
+How this solution is implemented
+
+- The function ~org-include-img-from-pdf~ is the workhorse that does the PDF to
+  Image format conversion using ~convert~.
+- If the org file contains ~# ()convertfrompdf:t~, it will be assumed that the
+  user has a pdf file that they want to convert to an image file. The user
+  should put the above /special comment/ above the image file link as shown in the
+  below example.
+- The image file type is determined by the file extension in the bracket link
+  ~[[./myimage.EXT]]~.
+
+- By adding the ~org-include-img-from-pdf~ function to the ~before-save-hook~, that
+  function is executed every time the user saves the file (See the elisp snippet
+  following the function definition below).
+
+Example setup
+
+In this example setup I have the following files:
+
+- An org file like below that includes an image file.
+- The pdf file ~myimage.pdf~.
+
+#+begin_example org
+# ()convertfrompdf:t
+[[./myimage.png]]
+
+#+end_example
+
+Function to auto convert pdf to image files
+
+#+begin_src emacs-lisp
+(defun org-include-img-from-pdf (&rest _)
+  "Convert pdf files to image files in org-mode bracket links.
+
+    # ()convertfrompdf:t This is a special comment; tells that
+                         the upcoming link points to the
+                         to-be-converted-to file. If you have a
+                         foo.pdf that you need to convert to
+                         foo.png, use the foo.png file name in
+                         the link. [[./foo.png]]
+"
+  (interactive)
+  (if (executable-find "convert")
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward "^[ \t]*#\\s-+()convertfrompdf\\s-*:\\s-*t"
+                                  nil :noerror)
+          ;; Keep on going to the next line till it finds a line with bracketed
+          ;; file link.
+          (while (progn
+                   (forward-line 1)
+                   (not (looking-at org-bracket-link-regexp))))
+          ;; Get the sub-group 1 match, the link, from `org-bracket-link-regexp'
+          (let ((link (match-string-no-properties 1)))
+            (when (stringp link)
+              (let* ((imgfile (expand-file-name link))
+                     (pdffile (expand-file-name
+                               (concat (file-name-sans-extension
+                                        imgfile)
+                                       "." "pdf")))
+                     (cmd (concat "convert -density 96 -quality 85 "
+                                  pdffile " " imgfile)))
+                (when (and (file-readable-p pdffile)
+                           (file-newer-than-file-p pdffile
+                                                   imgfile))
+                  ;; This block is executed only if pdffile is newer than
+                  ;; imgfile or if imgfile does not exist.
+                  (shell-command cmd)
+                  (message "%s" cmd)))))))
+    (user-error "`convert' executable (part of Imagemagick) is not found")))
+#+end_src
+
+Hook setup to specify when to run this function
+
+#+begin_src emacs-lisp
+(defun my/org-include-img-from-pdf-before-save ()
+  "Execute `org-include-img-from-pdf' just before saving the file."
+    (add-hook 'before-save-hook #'org-include-img-from-pdf nil
+              :local))
+
+(add-hook 'org-mode-hook
+          #'my/org-include-img-from-pdf-before-save)
+
+;; If you want to attempt to auto-convert PDF to PNG only during exports, and
+;; not during each save.
+;; (with-eval-after-load 'ox
+;;   (add-hook 'org-export-before-processing-hook
+;;             #'org-include-img-from-pdf))
+#+end_src
+
+[[https://github.com/kaushalmodi/.emacs.d/tree/master/elisp/org-include-img-from-pdf][Code + MWE]]
+#+begin_comment
+Does this mean that an exported file uses the png instead of the pdf? –
+<2019-01-28 Mon 12:50>
+#+end_comment
+
+* Answer (3) (2021-12-02 / 2021-12-02)
+
+There is now a package on melpa just for this purpose: *org-inline-pdf*.
+
+It is developed at github, where you also find usage information.
+[[https://github.com/shg/org-inline-pdf.el][https://github.com/shg/org-inline-pdf.el]]
+
+Note that this package needs the [[https://github.com/dawbarton/pdf2svg][pdf2svg]] tool. Also orgmode 9.4 is a minimum
+requirement.
+
+* History
+[[elisp:(howdoyou-promise-answer "import pdf to emacs org")][import pdf to emacs org]]
+[[elisp:(howdoyou-promise-answer "elisp random a character on keyboard")][elisp random a character on keyboard]]
+[[elisp:(howdoyou-promise-answer "bookmarklet for macos xwidget-webkit")][bookmarklet for macos xwidget-webkit]]

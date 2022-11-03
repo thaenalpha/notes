@@ -1,0 +1,21 @@
+:PROPERTIES:
+:ID:       61e60792-4c9c-4f88-bc72-a0c8c14b4b26
+:ROAM_REFS: https://teddit.zaggy.nl/r/OrgRoam/comments/nshzel
+:END:
+#+title: Add properties to org-roam-capture-templates?
+#+filetags: :org-roam:
+#+source: 4 months ago, [[https://github.com/org-roam/org-roam/issues/1783][Enable user to add custom properties and prompts in capture]]
+#+begin_src emacs-lisp
+(setq org-roam-capture-templates
+      '(("d" "default" plain
+         "%?"
+         :if-new (file+head "${slug}.org"
+                            ":PROPERTIES:
+:MYPROPERTY: test
+:CATEGORY: mycategory
+:ROAM_ALIASES: %^{aliases}
+:END:
+,#+title: ${title}\n")
+         :immediate-finish t
+         :unnarrowed t)))
+#+end_src
