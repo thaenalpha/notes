@@ -10,4 +10,5 @@ clj-kondo --lint "$(clojure -Spath)" --dependencies --parallel --copy-configs
 clj-kondo --lint "$(lein classpath)" --dependencies --parallel --copy-configs
 #+end_src
 
-to lint the entire classpath to teach clj-kondo about all the libraries you are using, including [[id:d3065285-875a-43f6-9965-12697aadba2b][Clojure]] and/or ClojureScript itself
+To lint the entire classpath to teach clj-kondo about all the libraries you are
+using, including [[id:d3065285-875a-43f6-9965-12697aadba2b][Clojure]] and/or ClojureScript itself
