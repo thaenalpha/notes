@@ -4,14 +4,35 @@
 :END:
 #+title: Org
 #+subtitle: Organize your plain life in plain text
-#+filetags: :org-mode:org-export:images:image-mode:info:org-babel:org-table:Technical:
+#+filetags: :emacs:org-mode:
 
 * Table of Contents :TOC:
 - [[#release-notes][Release Notes]]
 - [[#documentation][Documentation]]
   - [[#the-org-manual][The Org Manual]]
-  - [[#faq][FAQ]]
+  - [[#frequently-asked-questions][Frequently Asked Questions]]
   - [[#workflow-tips-tricks--tutorials][Workflow Tips, Tricks & Tutorials]]
+- [[#general][General]]
+  - [[#copy-and-paste-from-pdf-to-emacs-as-plain-text][Copy and Paste From PDF to Emacs as Plain Text]]
+  - [[#inline-code-in-org-mode][Inline code in org-mode]]
+  - [[#is-it-possible-to-insert-images-from-the-web-with-its-url][Is it possible to insert images from the web with its url?]]
+  - [[#what-is-the-difference-between-sh-and-shell-for-org-babel][What is the difference between sh and shell for org-babel?]]
+  - [[#how-can-emacs-org-mode-execute-shell-code-remotely-as-sudo][How can emacs org-mode execute shell code remotely as sudo?]]
+- [[#how-do-i][How do I]]
+  - [[#add-properties-to-org-roam-capture-templates][Add properties to org-roam-capture-templates?]]
+  - [[#change-the-language-of-a-result-of-results-output-code-block][Change the language of a result of ":results output code" block]]
+  - [[#color-horizontal-lines-in-org-mode][Color horizontal lines in org mode?]]
+  - [[#count-direct-or-indirect-children-in-org-or-outline-mode][Count direct or indirect children in org or outline mode]]
+  - [[#display-pdf-images-in-org-mode][Display PDF images in org-mode]]
+  - [[#org-display-remote-inline-images][org-display-remote-inline-images]]
+  - [[#reference-the-org-elements-inside-source-code-blocks][reference the org elements inside source code blocks]]
+  - [[#run-a-custom-function-after-scheduling-an-entry-in-org-mode][Run a custom function after scheduling an entry in org-mode?]]
+  - [[#run-shell-scripts-with-backgrounded-processes-without-hanging-emacs][Run shell scripts with backgrounded processes without hanging Emacs]]
+  - [[#set-a-default-alignment-of-images-in-html-export][set a default alignment of images in HTML export?]]
+  - [[#strike-through-or-un-strike-through-a-region-or-line-in-org-mode][strike-through or un-strike-through a region or line in org-mode?]]
+  - [[#tangle-org-file-containing-include-directives-and-multiple-tangle-targets][Tangle Org file containing #+INCLUDE directives and multiple tangle targets]]
+  - [[#tangle-the-same-src-block-to-different-files][Tangle the same src block to different files]]
+  - [[#tangle-single-src-block-into-multiple-output-files-org-babel][Tangle single SRC block into multiple output files? :org-babel]]
 - [[#community-resources][Community Resources]]
   - [[#tutorials--guides][Tutorials & guides]]
   - [[#projects-that-supportcomplement-org][Projects that support/complement Org]]
@@ -19,7 +40,6 @@
 
 * Release Notes
 * Documentation
-
 ** [[id:b2ac1058-0b11-4b50-9205-d2041c4b0847][The Org Manual]] :info:
 
 + [[elisp:(org-info-find-node "(org) Markup for Rich Contents")][Markup for Rich Contents]]
@@ -42,29 +62,10 @@
   * [[elisp:(org-info-find-node "(org) Evaluating Code Blocks")][Evaluating Code Blocks]]
   - [[id:1d7d4f94-75b6-470d-9d75-a316cb9f4bab][Results of Evaluation]]
 
-** FAQ :org:
-
+** Frequently Asked Questions
 Answers to common issues and questions
-
-*** General
-
-Questions about the Org-Mode.
-- [[id:31f3850c-6675-4c54-83df-bd1fcbd17236][Convert between numbered and unordered lists in org-mode]]
-**** [[id:7ab8ad24-7c50-4674-9a43-6e38600ad575][Copy and Paste From PDF to Emacs as Plain Text]] :yank:
-**** [[id:2acec60d-f2da-4f70-af6e-4e8dc473ece1][Is it possible to insert images from the web with its url?]] :image:mode:
-**** [[id:93ecb129-fbc1-4997-992f-b9f361181e04][What is the difference between sh and shell for org-babel?]] :babel:table:
-
-*** How do I
-
-For common how-to and configuration questions from Org users.
-**** [[id:61e60792-4c9c-4f88-bc72-a0c8c14b4b26][Add properties to org-roam-capture-templates?]] :roam:
-**** [[id:52fb5f58-10c9-4422-9964-c9b202175077][change the language of a result of ":results output code" block]] :babel:
-**** [[id:a78257bb-e870-4b34-8752-a304eeb9bdbe][color horizontal lines in org mode?]]
-**** [[id:d1001157-9a34-444c-ab0c-66e28c175526][set a default alignment of images in HTML export?]] :export:images:
-**** [[id:6f51a71b-12a5-4a74-89ac-c1e95fa6c90e][strike-through or un-strike-through a region or line in org-mode?]]
-**** [[id:13a719f9-756d-4ddc-af7e-ca2d50e71063][org-display-remote-inline-images]] :images:
-**** [[id:d39b8011-156c-4627-a03e-f72b9b40cc3f][Display PDF images in org-mode]] :pdf:images:
-**** [[id:5ecd7c7a-de6a-4684-8b4e-c03e5f3d420d][reference the org elements inside source code blocks]] :export:latex:
+- [[id:12a25fdc-eb28-4827-82f9-aa7d0313b8d0][General]]
+- [[id:c319ba1f-d23d-4a74-98a5-1ba4f74a03e7][How do I]]
 
 ** Workflow Tips, Tricks & Tutorials
 
@@ -105,6 +106,97 @@ and for "p".
 #+end_quote
 
 *** [[id:cde90655-786f-4c64-a42e-46638a3d71c7][Creating org-tables from the results of a code block]]
+
+* General :org:
+:PROPERTIES:
+:ID:       12a25fdc-eb28-4827-82f9-aa7d0313b8d0
+:END:
+
+Questions about the Org-Mode.
+- [[id:31f3850c-6675-4c54-83df-bd1fcbd17236][Convert between numbered and unordered lists in org-mode]]
+** [[id:7ab8ad24-7c50-4674-9a43-6e38600ad575][Copy and Paste From PDF to Emacs as Plain Text]] :yank:
+** [[id:7a483d8f-1f3d-4c19-9982-13921ff5a312][Inline code in org-mode]] :markdown:
+** [[id:2acec60d-f2da-4f70-af6e-4e8dc473ece1][Is it possible to insert images from the web with its url?]] :image:mode:
+** [[id:93ecb129-fbc1-4997-992f-b9f361181e04][What is the difference between sh and shell for org-babel?]] :babel:table:
+
+** [[id:3ea3fd1e-9b21-43c9-b1f9-1a069fd78e54][How can emacs org-mode execute shell code remotely as sudo?]] :babel:tramp:
+
+* How do I
+:PROPERTIES:
+:ID:       c319ba1f-d23d-4a74-98a5-1ba4f74a03e7
+:END:
+
+For common how-to and configuration questions from Org users.
+- [[id:ea7a4acd-a5e5-4dfd-ac57-4d64b97bca29][Display #+INCLUDE File Contents in Github README.org?]]
+** [[id:61e60792-4c9c-4f88-bc72-a0c8c14b4b26][Add properties to org-roam-capture-templates?]] :roam:
+** [[id:52fb5f58-10c9-4422-9964-c9b202175077][Change the language of a result of ":results output code" block]] :babel:
+** [[id:a78257bb-e870-4b34-8752-a304eeb9bdbe][Color horizontal lines in org mode?]]
+** [[id:4f650581-281e-4b95-8d4d-03f5118c76bc][Count direct or indirect children in org or outline mode]] :outline:mode:
+** [[id:d39b8011-156c-4627-a03e-f72b9b40cc3f][Display PDF images in org-mode]] :pdf:images:
+** [[id:13a719f9-756d-4ddc-af7e-ca2d50e71063][org-display-remote-inline-images]] :images:
+** [[id:5ecd7c7a-de6a-4684-8b4e-c03e5f3d420d][reference the org elements inside source code blocks]] :export:latex:
+** [[id:a435cd2b-0f13-490c-ab1a-ea8c7d364024][Run a custom function after scheduling an entry in org-mode?]]
+** [[id:068a6863-1c5e-4285-b36e-eb1ab4704cd6][Run shell scripts with backgrounded processes without hanging Emacs]] :background:process:freeze:
+** [[id:d1001157-9a34-444c-ab0c-66e28c175526][set a default alignment of images in HTML export?]] :export:images:
+** [[id:6f51a71b-12a5-4a74-89ac-c1e95fa6c90e][strike-through or un-strike-through a region or line in org-mode?]]
+** [[id:71fe89c2-645b-470a-ba0e-5c540401df43][Tangle Org file containing #+INCLUDE directives and multiple tangle targets]] :org:export:org:babel:
+** [[id:82264558-6039-4950-bd94-57fc34c898de][Tangle the same src block to different files]] :tangle:
+** Tangle single SRC block into multiple output files? :babel:python:
+:PROPERTIES:
+:ID:       2b716716-7b4f-4a08-987a-e6bfaa646bd6
+:ROAM_REFS: "[[https://emacs.stackexchange.com/questions/73436/how-to-tangle-single-src-block-into-multiple-output-files][org mode - Emacs Stack Exchange]]"
+:END:
+*** Question (0)
+I want to something like following to work:
+
+#+begin_example
+#+begin_src python :tangle file1.py file2.py
+import time
+#+end_src
+#+end_example
+
+And after tangling, I want both file1.py, file2.py has lines.
+
+How tangle single SRC block into multiple output files?
+
+I found same question 4 years ago. But seems didn't work perhaps the versions
+aren't same as my emacs & org-version.
+
+Is there any other ways?
+
+*** Answer (1) (2022-09-05)
+:PROPERTIES:
+:VISIBILITY: all
+:END:
+You can have a global (or regional) :prologue that inserts common text at the
+front of blocks, :epilogue that inserts common text at the end of blocks, or use
+the more verbose <<noweb>> references to insert common text in the middle.
+
+Not as elegant as the linked answer, but for small use cases, this could be
+manageable:
+
+#+begin_example org
+Common block
+
+#+NAME: common
+#+BEGIN_SRC code
+common
+#+END_SRC
+
+File foo:
+
+#+BEGIN_SRC code :tangle foo.file
+<<common>>
+foo
+#+END_SRC
+
+File bar:
+
+#+BEGIN_SRC code :tangle bar.file
+<<common>>
+bar
+#+END_SRC
+#+end_example
 
 * Community Resources
 
