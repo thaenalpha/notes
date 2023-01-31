@@ -1,0 +1,83 @@
+:PROPERTIES:
+:ID:       c56d0d7a-0d98-4acd-868b-9420b1fc6b97
+:ROAM_REFS: https://github.com/kuanyui/copy-as-org-mode
+:DESCRIPTION: kuanyui/copy-as-org-mode: A Firefox Add-on (WebExtension) to copy selected web page into Org-mode formatted text!
+:END:
+#+HTML_HEAD_EXTRA: <style>.figure p img {max-width: 1077px;}</style>
+#+title: Copy as Org-Mode
+#+author: ono ono (kuanyui)
+* Install
+
+- [[https://addons.mozilla.org/en-US/firefox/addon/copy-as-org-mode/][Mozilla Add-ons]]
+
+* Screenshot
+#+caption: Context menu for copy.
+[[https://addons.mozilla.org/user-media/previews/full/261/261819.png]]
+#+caption: Copy article along with table containing wide-characters (Japanese) in web page as Org-mode, with preview in notification popup.
+[[https://addons.mozilla.org/user-media/previews/full/261/261939.png]]
+#+caption: Settings page (Options UI)
+[[https://addons.mozilla.org/user-media/previews/full/275/275962.png]]
+
+* Supported Browser
+
+- Firefox for Desktop >= 92
+
+* All Support Syntax
+
+- =* Outline=, =1. ordered list=, =- unordered list=, =- [ ] GitHub style todo list=
+- =| Table | Can | Be | Copied! |=
+- Paragraph =<p>=, Horizontal splitter =--------=
+- Quoteblock =#+begin_quote= , Codeblock ( =: one line code...= or =#+begin_src= +
+  auto guess language ID. e.g. =js=, =c=, =shell= )
+- =*bold*=, =/italic/=, =_underline_=, =+strike+=, ~=verbatim=~, =~code~=, =_{sub}=, =^{sup}=
+- =[[link url][link title]]=, =[[a.href][img.src]]= (Notice: multiple =<img>=
+  elements + other elements wrapped in =<a>= element is not supported by org-mode
+  syntax. I have serveral plans as workaround for this but haven’t decided which
+  one is better, hence not implemented this yet..)
+- =[[imgSrc]]= (Notice: I haven’t decide how to deal with HTML =title= and =alt=
+  attribute)
+
+* Known Issues (Plegase feel free to open PR to fix them)
+
+- Nested mark (e.g. ~*=bold and=* /=italic code=/~) may has some issues for
+  org-mode renderer. This is a common usage in HTML, but may mess up the
+  org-mode renderer. *This is the limitation of org-mode’s syntax & renderer, I
+  cannot do anything for it* .
+- Some block elements in =<a>= (e.g. =<img>=) may cannot be handled properly. *This
+  is the limitation of org-mode’s syntax* .
+  #+begin_quote
+For example, ~<a> inner text 1 <img src="..."> another text 2 <img src="...">
+another text 3 </a>~
+
+- One of the workarounds I can think up so far is to split each Node and make
+  each of them an independent links, but looks disgusting… Like =[[url][inner
+  text 1]] [[url][imgsrc]] [[url][another text 2]] [[url][imgsrc]]
+  [[url][another text 3]]= ….
+- Or use ~#+HTML: <a href="url">~ and =#+HTML:</a>= to wrap the children contents
+  and elements. However, this will make the =<a>= to a block element and create
+  unneeded inevitable new lines.
+  #+end_quote
+
+- =<pre>= may lost newlines in some page (e.g.
+  [[https://kuanyui.github.io/2017/08/16/macros-for-qproperty/][https://kuanyui.github.io/2017/08/16/macros-for-qproperty/]]). Should be fixed
+  now but I cannot sure.
+- Notification may freeze the whole Firefox *when using on Linux* (Test on Firefox
+  92, Ubuntu & Manjaro), but such issue seems not occurs on Firefox for Windows.
+  So I make this feature an optional setting, you can enable it manually.
+
+* Permissions
+
+#+begin_quote
+This software is created by a paranoid^{TM} free-software & open-source
+enthusiast, would never collect your any data. Feel free to review the whold
+code base if doubt.
+#+end_quote
+
+* TODOs
+
+- Customizable keyboard shortcuts.
+- Image to data URL?
+
+* License
+
+MPL-2.0.
